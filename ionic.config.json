@@ -1,0 +1,7 @@
+{
+  "name": "belajarbudaya",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
