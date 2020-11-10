@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ModalAlertComponent } from '../components/modal-alert/modal-alert.component';
 
 @Component({
   selector: 'app-level3',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Level3Page implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
+  async presentModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalAlertComponent,
 
+    });
+
+    // modal.onDidDismiss().then(resultData)
+    return await modal.present();
+  }
 }
