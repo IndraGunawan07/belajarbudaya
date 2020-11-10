@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Pengaturan </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" lines="none">
+  <ion-item color="tertiary">
+    <ion-range value="0" color="secondary">
+      <ion-icon
+        slot="start"
+        size="small"
+        name="musical-note"
+        color="secondary"
+      ></ion-icon>
+      <ion-icon
+        slot="end"
+        size="big"
+        name="musical-note"
+        color="secondary"
+      ></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item color="tertiary" lines="none">
+    <ion-icon slot="start" name="locate" color="secondary"></ion-icon>
+    <ion-label color="secondary">Tentukan Lokasi</ion-label>
+  </ion-item>
+
+  <ion-item color="tertiary" lines="none">
+    <ion-label slot="start" color="secondary">Penjelasan</ion-label>
+    <ion-toggle
+      slot="end"
+      value="description"
+      color="primary"
+      checked
+    ></ion-toggle>
+  </ion-item>
+
+  <ion-button expand="block" color="tertiary">
+    <ion-label color="secondary">Simpan</ion-label>
+  </ion-button>
+</ion-content>

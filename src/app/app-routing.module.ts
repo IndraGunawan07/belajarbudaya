@@ -22,7 +22,15 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./login/splash/splash.module').then( m => m.SplashPageModule)
+  },  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 ];
 
 @NgModule({
