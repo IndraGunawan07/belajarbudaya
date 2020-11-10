@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./login/splash/splash.module').then( m => m.SplashPageModule)
+  },  {
+    path: 'level3',
+    loadChildren: () => import('./quiz/level3/level3.module').then( m => m.Level3PageModule)
   },
+
 ];
 
 @NgModule({
