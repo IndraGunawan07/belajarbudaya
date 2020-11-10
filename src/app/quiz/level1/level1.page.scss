@@ -1,0 +1,31 @@
+.title{
+    color: rgba(0, 0, 0, 0.604);
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.question{
+    color: rgba(0, 0, 0, 0.604);
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.option{
+    --border-radius: 20px;
+    --padding-top: 30px;
+    --padding-end: 40px;
+    --padding-start: 40px;
+    --padding-bottom: 30px;
+    width: 90%;
+    height: 70%;
+}
+
+.row{
+    margin-bottom: 50px;
+}
+
+.time{
+    color: #7A9EAF;
+}
