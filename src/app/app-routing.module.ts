@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'level3',
     loadChildren: () => import('./quiz/level3/level3.module').then( m => m.Level3PageModule)
   },
+  {
+    path: 'level1',
+    loadChildren: () => import('./quiz/level1/level1.module').then( m => m.Level1PageModule)
+  },
 
 ];
 
