@@ -1,0 +1,16 @@
+ion-slides {
+  height: 100%;
+}
+.carouselImage {
+  border-radius: 10px;
+}
+ion-card-header {
+  padding: 0;
+  padding-top: 16px;
+}
+ion-content.background {
+  --background: url("../../assets/icon/bg.jpg") no-repeat fixed center;
+}
+ion-button {
+  margin: 0;
+}
