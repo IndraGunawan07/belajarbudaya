@@ -60,6 +60,10 @@ const routes: Routes = [
     path: 'level-clear',
     loadChildren: () => import('./quiz/level-clear/level-clear.module').then( m => m.LevelClearPageModule)
   },
+  {
+    path: 'levellose',
+    loadChildren: () => import('./quiz/levellose/levellose.module').then( m => m.LevellosePageModule)
+  },
 
 ];
 

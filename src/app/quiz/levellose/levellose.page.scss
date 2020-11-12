@@ -6,17 +6,6 @@
     font-weight: bold;
 }
 
-.correct{
-    color: rgba(0, 0, 0, 0.604);
-    font-size: 25px;
-    text-align: center;
-    margin-top: 40%;
-}
-
-.textCenter{
-    text-align: center;
-}
-
 .option{
     --background: #7A9EAF;
     --border-radius: 10px;
@@ -25,4 +14,8 @@
     --padding-start: 20px;
     --padding-bottom: 7px;
     color: white;
+}
+
+.textCenter{
+    text-align: center;
 }
