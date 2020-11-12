@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Level Selesai</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <p class="title ion-text-wrap">Selamat! Anda sudah menyelesaikan Level ini</p>
+  <p class="correct">Jawaban benar: 7/10</p>
+
+  <p class="textCenter"><ion-button class="option">Menu Utama</ion-button></p>
+  <p class="textCenter"><ion-button class="option">Level Selanjutnya</ion-button></p>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Beranda</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+  
+      <ion-tab-button tab="speakers">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <ion-label>Tentang</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="map">
+        <ion-icon name="settings-outline"></ion-icon>
+        <ion-label>Pengaturan</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="about">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Akun</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

@@ -56,6 +56,10 @@ const routes: Routes = [
     path: 'explanation',
     loadChildren: () => import('./quiz/explanation/explanation.module').then( m => m.ExplanationPageModule)
   },
+  {
+    path: 'level-clear',
+    loadChildren: () => import('./quiz/level-clear/level-clear.module').then( m => m.LevelClearPageModule)
+  },
 
 ];
 
