@@ -1,18 +1,18 @@
-.title{
+.title {
     color: rgba(0, 0, 0, 0.604);
     font-size: 25px;
     text-align: center;
     margin-bottom: 0;
 }
 
-.question{
+.question {
     color: rgba(0, 0, 0, 0.604);
     font-size: 15px;
     text-align: center;
     margin-bottom: 30px;
 }
 
-.option{
+.option {
     --border-radius: 20px;
     --padding-top: 30px;
     --padding-end: 40px;
@@ -21,12 +21,36 @@
     width: 90%;
     height: 70%;
     font-weight: bolder;
-}
-
-.row{
-    margin-bottom: 50px;
-}
-
-.time{
+    --border-color: #7A9EAF;
     color: #7A9EAF;
+}
+
+.row {
+    margin-bottom: 1rem;
+}
+
+
+// .card-footer {
+//     position: absolute;
+//     bottom: 0;
+//     width: 100%;
+
+// }
+
+.has-card-footer {
+    position: absolute;
+
+    bottom: 50px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    background-color: #7A9EAF;
+    color: white;
+}
+
+
+
+ion-icon {
+
+    font-size: 28px;
 }
