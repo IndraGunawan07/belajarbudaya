@@ -52,6 +52,10 @@ const routes: Routes = [
     path: 'aboutus',
     loadChildren: () => import('./aboutus/aboutus.module').then( m => m.AboutusPageModule)
   },
+  {
+    path: 'explanation',
+    loadChildren: () => import('./quiz/explanation/explanation.module').then( m => m.ExplanationPageModule)
+  },
 
 ];
 
