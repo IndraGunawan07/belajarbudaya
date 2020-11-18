@@ -2,16 +2,18 @@
   <ion-toolbar>
     <ion-title>Level 1 - Wisata</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref='/login'></ion-back-button>
+      <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="background">
-  <ion-img src="https://www.remotelands.com/travelogues/app/uploads/2019/06/Raja-Ampat-01.jpg"></ion-img>
+  <ion-img
+    src="https://www.remotelands.com/travelogues/app/uploads/2019/06/Raja-Ampat-01.jpg"
+  ></ion-img>
   <p class="title">Pertanyaan 3</p>
   <p class="question">Apa nama tempat diatas?</p>
-  
+
   <ion-grid>
     <ion-row class="row">
       <ion-col size="1"></ion-col>
@@ -25,20 +27,21 @@
     <ion-row>
       <ion-col size="1"></ion-col>
       <ion-col size="5">
-        <ion-button fill="outline" class="option ion-text-wrap">Raja Ampat</ion-button>
+        <ion-button fill="outline" class="option ion-text-wrap"
+          >Raja Ampat</ion-button
+        >
       </ion-col>
       <ion-col size="5">
         <ion-button fill="outline" class="option">Bali</ion-button>
       </ion-col>
     </ion-row>
-   
   </ion-grid>
-  
+
   <ion-card class="has-card-footer">
     <ion-grid>
       <ion-row class="card-footer">
         <ion-col>
-            <p>00:15</p>
+          <p>00:15</p>
         </ion-col>
         <ion-col class="ion-text-end">
           <ion-icon name="heart-outline"></ion-icon>
@@ -47,9 +50,8 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    
-</ion-card>
-  
+  </ion-card>
+
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule">
@@ -57,22 +59,23 @@
         <ion-label>Beranda</ion-label>
         <!-- <ion-badge>6</ion-badge> -->
       </ion-tab-button>
-  
+
       <ion-tab-button tab="speakers">
         <ion-icon name="information-circle-outline"></ion-icon>
         <ion-label>Tentang</ion-label>
       </ion-tab-button>
-  
+
       <ion-tab-button tab="map">
         <ion-icon name="settings-outline"></ion-icon>
         <ion-label>Pengaturan</ion-label>
       </ion-tab-button>
-  
+
       <ion-tab-button tab="about">
         <ion-icon name="person-circle-outline"></ion-icon>
         <ion-label>Akun</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-  
+
+  <app-tabs></app-tabs>
 </ion-content>

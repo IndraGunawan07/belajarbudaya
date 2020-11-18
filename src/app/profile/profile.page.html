@@ -1,9 +1,52 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center> Akun </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background" lines="none">
+  <ion-avatar class="user-avatar">
+    <img
+      src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+    />
+  </ion-avatar>
 
+  <ion-text color="tertiary">
+    <h2>Kim Jisoo</h2>
+  </ion-text>
+
+  <ion-text color="tertiary">
+    <h2>Koleksi Medali</h2>
+  </ion-text>
+
+  <div class="user-badges">
+    <ion-avatar class="badge">
+      <img
+        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+      />
+    </ion-avatar>
+    <ion-avatar class="badge">
+      <img
+        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+      />
+    </ion-avatar>
+    <ion-avatar class="badge">
+      <img
+        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+      />
+    </ion-avatar>
+  </div>
+
+  <ion-button expand="block" color="tertiary">
+    <ion-label color="secondary">Daftar Medali</ion-label>
+  </ion-button>
+
+  <ion-button expand="block" color="tertiary">
+    <ion-label color="secondary">Keluar</ion-label>
+  </ion-button>
+
+  <app-tabs></app-tabs>
 </ion-content>

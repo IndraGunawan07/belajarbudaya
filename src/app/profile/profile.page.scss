@@ -1,0 +1,43 @@
+ion-content.background {
+  --background: url("../../assets/icon/bg.jpg") no-repeat fixed center;
+}
+
+ion-item {
+  margin: 20px;
+  border-radius: 8px;
+}
+
+ion-button {
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.user-avatar {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 150px !important;
+  max-height: 150px !important;
+  margin-top: 30px !important;
+  margin: auto;
+  display: block;
+}
+
+ion-text {
+  display: flex;
+  justify-content: center;
+}
+
+.user-badges {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.badge {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+}

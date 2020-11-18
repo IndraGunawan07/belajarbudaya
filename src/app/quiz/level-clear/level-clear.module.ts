@@ -1,20 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 
-import { IonicModule } from '@ionic/angular';
-
-import { LevelClearPageRoutingModule } from './level-clear-routing.module';
-
-import { LevelClearPage } from './level-clear.page';
+import { TabsComponent } from "src/app/tabs/tabs.component";
+import { LevelClearPage } from "./level-clear.page";
+import { LevelClearPageRoutingModule } from "./level-clear-routing.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LevelClearPageRoutingModule
+    LevelClearPageRoutingModule,
   ],
-  declarations: [LevelClearPage]
+  declarations: [LevelClearPage, TabsComponent],
 })
 export class LevelClearPageModule {}

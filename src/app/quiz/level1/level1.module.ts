@@ -1,20 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 
-import { IonicModule } from '@ionic/angular';
-
-import { Level1PageRoutingModule } from './level1-routing.module';
-
-import { Level1Page } from './level1.page';
+import { TabsComponent } from "src/app/tabs/tabs.component";
+import { Level1Page } from "./level1.page";
+import { Level1PageRoutingModule } from "./level1-routing.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    Level1PageRoutingModule
-  ],
-  declarations: [Level1Page]
+  imports: [CommonModule, FormsModule, IonicModule, Level1PageRoutingModule],
+  declarations: [Level1Page, TabsComponent],
 })
 export class Level1PageModule {}

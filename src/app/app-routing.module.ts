@@ -3,14 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: "home",
-    loadChildren: () =>
-      import("./home/home.module").then((m) => m.HomePageModule),
-  },
-  {
     path: "",
     redirectTo: "login",
     pathMatch: "full",
+  },
+  {
+    path: "home",
+    loadChildren: () =>
+      import("./home/home.module").then((m) => m.HomePageModule),
   },
   {
     path: "login",
@@ -48,23 +48,33 @@ const routes: Routes = [
     path: "level1",
     loadChildren: () =>
       import("./quiz/level1/level1.module").then((m) => m.Level1PageModule),
-  },  {
-    path: 'aboutus',
-    loadChildren: () => import('./aboutus/aboutus.module').then( m => m.AboutusPageModule)
   },
   {
-    path: 'explanation',
-    loadChildren: () => import('./quiz/explanation/explanation.module').then( m => m.ExplanationPageModule)
+    path: "aboutus",
+    loadChildren: () =>
+      import("./aboutus/aboutus.module").then((m) => m.AboutusPageModule),
   },
   {
-    path: 'level-clear',
-    loadChildren: () => import('./quiz/level-clear/level-clear.module').then( m => m.LevelClearPageModule)
+    path: "explanation",
+    loadChildren: () =>
+      import("./quiz/explanation/explanation.module").then(
+        (m) => m.ExplanationPageModule
+      ),
   },
   {
-    path: 'levellose',
-    loadChildren: () => import('./quiz/levellose/levellose.module').then( m => m.LevellosePageModule)
+    path: "level-clear",
+    loadChildren: () =>
+      import("./quiz/level-clear/level-clear.module").then(
+        (m) => m.LevelClearPageModule
+      ),
   },
-
+  {
+    path: "levellose",
+    loadChildren: () =>
+      import("./quiz/levellose/levellose.module").then(
+        (m) => m.LevellosePageModule
+      ),
+  },
 ];
 
 @NgModule({
