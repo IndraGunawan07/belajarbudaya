@@ -36,12 +36,14 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-card class="has-card-footer">
+  
+  <ion-card class="has-card-footer" *ngFor="let item of quizList">
     <ion-grid>
       <ion-row class="card-footer">
         <ion-col>
-          <p>00:15</p>
+          <p>{{item.quizName}}</p>
+          <p>{{item.quizDesc}}</p>
+          <!-- <p>00:15</p> -->
         </ion-col>
         <ion-col class="ion-text-end">
           <ion-icon name="heart-outline"></ion-icon>
