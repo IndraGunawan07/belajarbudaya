@@ -14,10 +14,11 @@
   <p class="title">Pertanyaan 3</p>
   <p class="question">Apa nama tempat diatas?</p>
 
-  <ion-grid>
+  <ion-grid *ngFor="let item of quizList">
     <ion-row class="row">
       <ion-col size="1"></ion-col>
       <ion-col size="5">
+        <p>{{item.answer1}}</p>
         <ion-button fill="outline" class="option">Kerinci</ion-button>
       </ion-col>
       <ion-col size="5">
@@ -37,13 +38,13 @@
     </ion-row>
   </ion-grid>
   
-  <ion-card class="has-card-footer" *ngFor="let item of quizList">
+  <ion-card class="has-card-footer" >
     <ion-grid>
       <ion-row class="card-footer">
         <ion-col>
-          <p>{{item.quizName}}</p>
-          <p>{{item.quizDesc}}</p>
-          <!-- <p>00:15</p> -->
+          
+         
+          <p>00:15</p>
         </ion-col>
         <ion-col class="ion-text-end">
           <ion-icon name="heart-outline"></ion-icon>
