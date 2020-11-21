@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { QuizappService } from 'src/app/quizapp.service';
-import { ModalAlertComponent } from '../components/modal-alert/modal-alert.component';
-import { ModalFailComponent } from '../components/modal-fail/modal-fail.component';
 
 @Component({
-  selector: 'app-level3',
-  templateUrl: './level3.page.html',
-  styleUrls: ['./level3.page.scss'],
+  selector: 'app-level2',
+  templateUrl: './level2.page.html',
+  styleUrls: ['./level2.page.scss'],
 })
-export class Level3Page implements OnInit {
+export class Level2Page implements OnInit {
 
   @ViewChild('slides') slides: any;
   slideOptions: any;
@@ -118,14 +116,5 @@ export class Level3Page implements OnInit {
     await alert.present();
   }
 
-  // async presentTrue() {
-  //   const modal = await this.modalCtrl.create({
-  //     component: ModalAlertComponent,
-
-  //   });
-
-  //   // modal.onDidDismiss().then(resultData)
-  //   return await modal.present();
-  // }
 
 }

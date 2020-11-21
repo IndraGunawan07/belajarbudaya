@@ -5,11 +5,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class QuizappService {
-  collectionName = "SoalQuiz"
 
   constructor(private firestore: AngularFirestore) { }
 
   getAllQuiz() {
-    return this.firestore.collection(this.collectionName).snapshotChanges();
+    return this.firestore.collection(`SoalQuiz`).snapshotChanges();
+  }
+  getCategory() {
+    var data = "Makanan";
+    return data;
   }
 }

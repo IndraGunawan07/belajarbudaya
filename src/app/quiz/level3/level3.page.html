@@ -4,29 +4,59 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button (click)="presentModal()"></ion-button>
-  <ion-grid>
-    <ion-row class="ion-align-items-center">
-      <ion-col size="6" size-sm>
-        <ion-button fill="outline" style="max-width: 200px">Kerinci</ion-button>
-      </ion-col>
-      <ion-col size="6" size-sm>
-        <ion-button fill="outline" style="max-width: 200px">Lombok</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6" size-sm>
-        <ion-button fill="outline" style="max-width: 200px"
-          >Raja<br />
-          Ampat</ion-button
-        >
-      </ion-col>
-      <ion-col size="6" size-sm>
-        <ion-button fill="outline" style="max-width: 50px">Bali</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
+<ion-content class="background">
+ 
+  <ion-slides #slides>
+    <ion-slide *ngFor="let item of quizList; let i = index;">
+    
+      <ion-grid >
+        <ion-row>
+          <ion-col size="12">
+            <ion-img
+            src="{{item.imgUrl}}"
+          ></ion-img>
+          </ion-col>
+          <ion-col size="12">
+            <h3>Question {{i+1}}</h3>
+          </ion-col>
+          <ion-col size="12">
+            <h3>{{item.question}}</h3>
+          </ion-col>
+          <ion-col size="12">
+            <ion-grid>
+              <ion-row class="row">
+                <ion-col size="1"></ion-col>
+                <ion-col size="5">
+                  <ion-button fill="outline" class="option ion-text-wrap" (click)="selectAnswer(item.answer1,item)"
+                  >{{item.answer1}}</ion-button
+                >
+                </ion-col>
+                <ion-col size="5">
+                  <ion-button fill="outline" class="option ion-text-wrap" (click)="selectAnswer(item.answer2,item)"
+                  >{{item.answer2}}</ion-button
+                >
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1"></ion-col>
+                <ion-col size="5">
+                  <ion-button fill="outline" class="option ion-text-wrap" (click)="selectAnswer(item.answer3,item)"
+                    >{{item.answer3}}</ion-button
+                  >
+                </ion-col>
+                <ion-col size="5">
+                  <ion-button fill="outline" class="option ion-text-wrap" (click)="selectAnswer(item.answer4,item)"
+                  >{{item.answer4}}</ion-button
+                >
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-slide>
+  </ion-slides>
   <app-tabs></app-tabs>
 </ion-content>

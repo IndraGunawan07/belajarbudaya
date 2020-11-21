@@ -1,23 +1,15 @@
-<ion-header>
-  <!-- <ion-toolbar>
-    <ion-title>{{ selectedRecipe.title }}</ion-title>
-    <ion-buttons slot="primary" (click)="onCancel()">
-      <ion-icon name="close"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar> -->
-</ion-header>
 
-<ion-content>
+<ion-content class="background">
   <ion-list>
-    <ion-item>
-      <h1 style="font-weight: bold; font-size: 50px; color: green;">Jawaban anda benar</h1>
-      
-    </ion-item>
-    <ion-button color="primary"  routerLink="">Penjelasan</ion-button>
-    <ion-button color="primary"  routerLink="">Selanjutnya</ion-button>
+    <h1>Jawaban Anda benar</h1>
+   <ion-grid>
+     <ion-row>
+       <ion-col> <ion-button type="button"color="primary"  routerLink="">Penjelasan</ion-button></ion-col>
+       <ion-col> <ion-button color="primary" (click)="nextSlide()">Selanjutnya</ion-button></ion-col>
+     </ion-row>
+   
+   
+   </ion-grid>
+   
   </ion-list>
- 
- 
- 
- 
 </ion-content>

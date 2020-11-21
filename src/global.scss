@@ -24,3 +24,54 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-modal {
+    --height: 40% !important;
+    position: absolute;
+}
+
+
+// alert message on true or false answer
+.alert-true .alert-wrapper {
+    padding-top: 1.125rem;
+    --width: 100% !important;
+    --height: 25% !important;
+    display: block;
+
+}
+
+.alert-true .alert-wrapper .alert-head .alert-title {
+    color: green;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.alert-true .alert-wrapper .alert-button-group .alert-button {
+
+    background-color: #7a9eaf;
+    color: white;
+    border-radius: 5px;
+
+}
+
+.alert-false .alert-wrapper {
+    padding-top: 1.125rem;
+    --width: 100% !important;
+    --height: 25% !important;
+    display: block;
+
+}
+
+.alert-false .alert-wrapper .alert-head .alert-title {
+    color: red;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+.alert-false .alert-wrapper .alert-button-group .alert-button {
+
+    background-color: #7a9eaf;
+    color: white;
+    border-radius: 5px;
+
+}
