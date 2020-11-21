@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private authSrv: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private loadingCtrl: LoadingController
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class RegisterPage implements OnInit {
   }
 
   tryRegister(value){
+    this.presentLoading();
     this.authSrv.registerUser(value)
     .then(res => {
       console.log(res);
@@ -59,6 +62,15 @@ export class RegisterPage implements OnInit {
 
   goLoginPage(){
     this.router.navigateByUrl('/login');
+  }
+
+  async presentLoading(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Adding contact...',
+      duration: 1000
+    });
+
+    await loading.present();
   }
 
 }
