@@ -25,22 +25,21 @@ export class HomePage {
       isBeginningSlide: true,
       isEndSlide: false,
       slidesItems: [
-        {image: 'https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fbg1.jpg?alt=media&token=6afff317-964b-4b80-a6be-478ecf10507e', id: '1'},
-        {image: 'https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fbg2.jpg?alt=media&token=79915258-1d10-44e3-a543-24b6b8511b71', id: '2'},
-        {image: 'https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fbg3.jpg?alt=media&token=acd86d70-9e4f-4a50-8e5e-511e30d05d4a', id: '3'},
-        {image: 'https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fbg4.jpg?alt=media&token=b8fad3fe-74b2-41d7-95c8-d87125ac1cb0', id: '4'},
+        {image: 'https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageBanner%2Ftana-toraja.jpg?alt=media&token=723c747d-16d8-4070-8334-a8fac9408d8d', id: '1'},
+        {image: 'https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageBanner%2Fraja-ampat.jpg?alt=media&token=b382495f-ac05-415f-b39b-3487572d4ccd', id: '2'},
+        {image: 'https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageBanner%2Fpulau-komodo.jpg?alt=media&token=dd9773c8-6522-4d81-aaed-6382a1e61adb', id: '3'},
       ]
     };
   }
 
   ngOnInit() {
     this.categoryData = [
-      {title:"Tari", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Ftraditional-dance.png?alt=media&token=28f5cb99-048c-4ccc-be35-d779d68c3aab"},
-      {title:"Wisata", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fpura-ulun-danu-bratan.png?alt=media&token=89a0b7aa-8583-45e6-8130-e51c601484d6"},
-      {title:"Makanan", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Ficons8-salad-100.png?alt=media&token=40c99a8d-2949-40e8-8b0c-d16f741e5a64"},
-      {title:"Musik", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fangklung.png?alt=media&token=5beccf73-f5e1-4a3b-a3a7-ccc9da1ed638"},
-      {title:"Rumah Adat", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2Fhouse.png?alt=media&token=576d491e-93c7-4f66-b5c9-b124f237725f"},
-      {title:"Upacara Adat", image:"https://firebasestorage.googleapis.com/v0/b/shovia-85fd5.appspot.com/o/background%2FScreenshot_7-removebg-preview.png?alt=media&token=beb29b60-9bd3-4562-8c0d-6c23808a7a77"},
+      {title:"Tari", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2Ftraditional-dance.png?alt=media&token=bfa3c65f-c495-4637-b9a6-7478d609a5ad"},
+      {title:"Wisata", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2Fpura-ulun-danu-bratan.png?alt=media&token=4f73733e-2cae-4566-9def-4dfcedb3d189"},
+      {title:"Makanan", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2Ficons8-salad-100.png?alt=media&token=93e82b13-16b4-4b97-9f38-4010caff653c"},
+      {title:"Musik", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2Fangklung.png?alt=media&token=95a725a5-cab2-4946-b11b-43e7637a9a82"},
+      {title:"Rumah Adat", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2Fhouse.png?alt=media&token=d15ad5e2-33de-4295-887c-ac0b3519f00c"},
+      {title:"Upacara Adat", image:"https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/imageCategory%2FScreenshot_7-removebg-preview.png?alt=media&token=00492f50-f6ee-4eae-b80e-a4458a21b492"},
 
     ]
   }
