@@ -17,6 +17,7 @@ export class Level1Page implements OnInit {
   slideOptions: any;
   quizList = [];
   quizData: SoalQuiz;
+  category: string;
 
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router) {
@@ -54,21 +55,21 @@ export class Level1Page implements OnInit {
       });
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
-        var category = this.quizService.getCategory();
-        console.log(category);
-        if (currentData.level == 1 && currentData.category == category) {
+        this.category = this.quizService.getCategory();
+        console.log(this.category);
+        if (currentData.level === 1 && currentData.category === this.category) {
           return true;
         }
-        return false
+        return false;
       });
 
     });
   }
 
   selectAnswer(answer, question) {
-    console.log("jawaban" + answer);
-    console.log("coba" + question.trueAnswer);
-    if (answer == question.trueAnswer) {
+    console.log('jawaban' + answer);
+    console.log('coba' + question.trueAnswer);
+    if (answer === question.trueAnswer) {
       this.presentTrue();
     }
     else {
