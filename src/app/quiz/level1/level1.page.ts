@@ -57,21 +57,25 @@ export class Level1Page implements OnInit {
         };
 
       });
+
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
         this.category = this.quizService.getCategory();
         console.log(this.category);
-        if (currentData.level === 1 && currentData.category === this.category) {
+        if (currentData.level == 1) {
+          i++;
+          console.log('data' + i);
           return true;
         }
         return false;
       });
 
+
     });
-    this.StartTimer();
+    this.startTimer();
     // this.startTimer();
   }
-  StartTimer() {
+  startTimer() {
     var stop = 0;
     this.interval = setInterval(function () {
 
@@ -89,29 +93,33 @@ export class Level1Page implements OnInit {
 
     }.bind(this), 1000)
 
-
-
-
   }
   selectAnswer(answer, question) {
     console.log('jawaban' + answer);
     console.log('coba' + question.trueAnswer);
     if (answer === question.trueAnswer) {
-      this.presentTrue();
+      clearInterval(this.interval);
+      this.presentTrue(question.id);
     }
     else {
       this.live -= 1;
       clearInterval(this.interval);
-      this.presentFalse();
+      this.presentFalse(question.id, question.trueAnswer);
     }
+  }
+  goToPenjelasan(id) {
+    console.log("datass " + id);
+    const penjelasan = this.quizService.setQuizExplain(id);
+    this.router.navigateByUrl('/explanation');
+    // var id = this.quizList.
   }
   nextSlide() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
-    this.StartTimer();
+    this.startTimer();
     this.slides.lockSwipes(true);
   }
-  async presentTrue() {
+  async presentTrue(id) {
     const alert = await this.alertController.create({
       header: 'Jawaban Anda Benar',
       cssClass: 'alert-true',
@@ -120,6 +128,7 @@ export class Level1Page implements OnInit {
           text: 'Penjelasan',
 
           cssClass: 'buttonColor',
+          handler: () => this.goToPenjelasan(id)
         },
         {
           text: 'Selanjutnya',
@@ -132,15 +141,17 @@ export class Level1Page implements OnInit {
 
     await alert.present();
   }
-  async presentFalse() {
+  async presentFalse(id, answer) {
     const alert = await this.alertController.create({
       header: 'Jawaban Anda Salah',
       cssClass: 'alert-false',
+      message: 'Jawaban yang Benar :' + answer,
       buttons: [
         {
           text: 'Penjelasan',
 
           cssClass: 'buttonColor',
+          handler: () => this.goToPenjelasan(id)
         },
         {
           text: 'Selanjutnya',
@@ -153,7 +164,7 @@ export class Level1Page implements OnInit {
 
     await alert.present();
   }
-  async presentTimeout() {
+  async presentTimeout(id) {
     const alert = await this.alertController.create({
       header: 'Waktu Anda Habis',
       cssClass: 'alert-false',
@@ -161,6 +172,7 @@ export class Level1Page implements OnInit {
         {
           text: 'Penjelasan',
           cssClass: 'buttonColor',
+          handler: () => this.goToPenjelasan(id)
         },
         {
           text: 'Selanjutnya',

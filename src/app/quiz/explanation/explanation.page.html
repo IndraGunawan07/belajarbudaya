@@ -9,41 +9,18 @@
 
 <ion-content class="background">
   <ion-img
-    src="https://www.remotelands.com/travelogues/app/uploads/2019/06/Raja-Ampat-01.jpg"
+    src="{{imgUrl}}"
   ></ion-img>
-  <p class="title">Raja Ampat</p>
+  <p class="title">{{title}}</p>
   <div class="description ion-text-wrap">
-    Raja Ampat merupakan Rangkaian empat gugusan pulau yang berada di Papua
+    {{desc}}
   </div>
 
   <p class="continueCenter">
     <ion-button class="continue">Selanjutnya</ion-button>
   </p>
 
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Beranda</ion-label>
-        <!-- <ion-badge>6</ion-badge> -->
-      </ion-tab-button>
-
-      <ion-tab-button tab="speakers">
-        <ion-icon name="information-circle-outline"></ion-icon>
-        <ion-label>Tentang</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="map">
-        <ion-icon name="settings-outline"></ion-icon>
-        <ion-label>Pengaturan</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="about">
-        <ion-icon name="person-circle-outline"></ion-icon>
-        <ion-label>Akun</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  
 
   <app-tabs></app-tabs>
 </ion-content>
