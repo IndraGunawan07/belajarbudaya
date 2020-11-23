@@ -62,7 +62,7 @@ export class Level1Page implements OnInit {
         console.log(currentData.level);
         this.category = this.quizService.getCategory();
         console.log(this.category);
-        if (currentData.level == 1) {
+        if (currentData.level == 1 && currentData.category == this.category) {
           i++;
           console.log('data' + i);
           return true;

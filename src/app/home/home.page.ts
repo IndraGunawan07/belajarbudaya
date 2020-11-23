@@ -48,6 +48,6 @@ export class HomePage implements OnInit {
 
   sendCategory(clickedCategory: string) {
     console.log(clickedCategory);
-    // this.quizService.setCategory(clickedCategory);
+    this.quizService.setCategory(clickedCategory);
   }
 }
