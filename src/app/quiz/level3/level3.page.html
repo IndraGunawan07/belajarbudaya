@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-content class="background">
+<ion-content  [fullscreen]="true" class="background">
  
   <ion-slides #slides>
     <ion-slide *ngFor="let item of quizList; let i = index;">
@@ -49,6 +49,16 @@
                   <ion-button fill="outline" class="option ion-text-wrap" (click)="selectAnswer(item.answer4,item)"
                   >{{item.answer4}}</ion-button
                 >
+                </ion-col>
+                <ion-col size="12" class="user-live" >
+                  <ion-row>
+                    <ion-col>
+                        <h4>0:15</h4>
+                    </ion-col>
+                    <ion-col>
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </ion-col>
+                  </ion-row>
                 </ion-col>
               </ion-row>
             </ion-grid>

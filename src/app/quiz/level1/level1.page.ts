@@ -17,7 +17,10 @@ export class Level1Page implements OnInit {
   slideOptions: any;
   quizList = [];
   quizData: SoalQuiz;
-
+  timer: any = 15;
+  live: any = 3;
+  clickAnswer: any = 0;
+  interval: any;
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router) {
     this.quizData = {} as SoalQuiz;
@@ -63,8 +66,31 @@ export class Level1Page implements OnInit {
       });
 
     });
+    this.StartTimer();
+    // this.startTimer();
   }
+  StartTimer() {
+    var stop = 0;
+    this.interval = setInterval(function () {
 
+      this.timer--;
+
+      if (this.timer == 0) {
+        stop = 1;
+      }
+      if (stop == 1) {
+
+        clearInterval(this.interval);
+        this.live -= 1;
+        this.presentTimeout();
+      }
+
+    }.bind(this), 1000)
+
+
+
+
+  }
   selectAnswer(answer, question) {
     console.log("jawaban" + answer);
     console.log("coba" + question.trueAnswer);
@@ -72,12 +98,15 @@ export class Level1Page implements OnInit {
       this.presentTrue();
     }
     else {
+      this.live -= 1;
+      clearInterval(this.interval);
       this.presentFalse();
     }
   }
   nextSlide() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
+    this.StartTimer();
     this.slides.lockSwipes(true);
   }
   async presentTrue() {
@@ -95,7 +124,8 @@ export class Level1Page implements OnInit {
           cssClass: 'primary',
           handler: () => this.nextSlide()
         }
-      ]
+      ],
+      backdropDismiss: false
     });
 
     await alert.present();
@@ -115,7 +145,28 @@ export class Level1Page implements OnInit {
           cssClass: 'primary',
           handler: () => this.nextSlide()
         }
-      ]
+      ],
+      backdropDismiss: false
+    });
+
+    await alert.present();
+  }
+  async presentTimeout() {
+    const alert = await this.alertController.create({
+      header: 'Waktu Anda Habis',
+      cssClass: 'alert-false',
+      buttons: [
+        {
+          text: 'Penjelasan',
+          cssClass: 'buttonColor',
+        },
+        {
+          text: 'Selanjutnya',
+          cssClass: 'primary',
+          handler: () => this.nextSlide()
+        }
+      ],
+      backdropDismiss: false
     });
 
     await alert.present();

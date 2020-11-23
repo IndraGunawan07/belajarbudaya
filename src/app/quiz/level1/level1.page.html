@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-content class="background">
+<ion-content [fullscreen]="true" class="background">
  
   <ion-slides #slides>
     <ion-slide *ngFor="let item of quizList; let i = index;">
@@ -52,6 +52,33 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
+          </ion-col>
+          <ion-col size="12" class="user-live" >
+            <ion-row>
+              <ion-col class="left-side">
+                  <h4>00:{{timer}}</h4>
+              </ion-col>
+              <ion-col class="right-side" *ngIf="live === 3">
+                <ion-icon name="heart"></ion-icon>
+                <ion-icon name="heart"></ion-icon>
+                <ion-icon name="heart"></ion-icon>
+              </ion-col>
+              <ion-col class="right-side" *ngIf="live === 2">
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name="heart"></ion-icon>
+                <ion-icon name="heart"></ion-icon>
+              </ion-col>
+              <ion-col class="right-side" *ngIf="live === 1">
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name="heart"></ion-icon>
+              </ion-col>
+              <ion-col class="right-side" *ngIf="live === 0">
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name="heart-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-grid>
