@@ -66,6 +66,13 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: "explanation",
+        loadChildren: () =>
+          import("../quiz/explanation/explanation.module").then(
+            (m) => m.ExplanationPageModule
+          ),
+      },
       { path: "", redirectTo: "/home", pathMatch: "full" },
     ],
   },

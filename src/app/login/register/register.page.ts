@@ -20,8 +20,8 @@ export class RegisterPage implements OnInit {
       { type: 'pattern', message: 'Enter a valid email.'}
     ],
     password: [
-      { type: 'reqired', message: 'Password is required.'},
-      { type: 'minLength', message: 'Password must be at least 6 characters long,'}
+      { type: 'required', message: 'Password is required.'},
+      { type: 'minlength', message: 'Password must be at least 6 characters long,'}
     ]
   };
 

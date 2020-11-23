@@ -9,7 +9,7 @@ import { NavController } from "@ionic/angular";
 export class QuizappService {
   category: string;
   idQuiz: any;
-  time: number;
+  time: number = 1;
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController
