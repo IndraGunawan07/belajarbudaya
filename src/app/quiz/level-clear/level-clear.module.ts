@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
-import { TabsComponent } from "src/app/tabs/tabs.component";
 import { LevelClearPage } from "./level-clear.page";
 import { LevelClearPageRoutingModule } from "./level-clear-routing.module";
 
@@ -14,6 +13,6 @@ import { LevelClearPageRoutingModule } from "./level-clear-routing.module";
     IonicModule,
     LevelClearPageRoutingModule,
   ],
-  declarations: [LevelClearPage, TabsComponent],
+  declarations: [LevelClearPage],
 })
 export class LevelClearPageModule {}

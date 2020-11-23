@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Router } from "@angular/router";
+import { NavController } from "@ionic/angular";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class QuizappService {
   category: string;
@@ -13,7 +13,7 @@ export class QuizappService {
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController
-  ) { }
+  ) {}
 
   getAllQuiz() {
     return this.firestore.collection(`SoalQuiz`).snapshotChanges();
@@ -22,7 +22,7 @@ export class QuizappService {
     this.idQuiz = id;
   }
   getQuizExplain() {
-    const data = this.firestore.doc<any>('SoalQuiz/22vrDkn96VVypKi5Aeoz');
+    const data = this.firestore.doc<any>("SoalQuiz/22vrDkn96VVypKi5Aeoz");
     return data.snapshotChanges();
   }
 
@@ -32,7 +32,7 @@ export class QuizappService {
 
   setCategory(clickedCategory: string) {
     this.category = clickedCategory;
-    this.navCtrl.navigateForward('/level1');
+    this.navCtrl.navigateForward("/level1");
   }
 
   getCategory() {

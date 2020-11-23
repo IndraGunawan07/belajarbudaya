@@ -43,26 +43,27 @@
       <ion-col
         size="6"
         style="text-align: center"
-        *ngFor="let category of categoryData">
-       <a (click)="sendCategory(category.title)">
-        <ion-card>
-          <ion-card-header>
-            <ion-img
-              src="{{category.image}}"
-              style="
-                height: 40px;
-                width: 40px;
-                margin-left: auto;
-                margin-right: auto;"></ion-img>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-label>{{category.title}}</ion-label>
-          </ion-card-content>
-        </ion-card>
-       </a>
+        *ngFor="let category of categoryData"
+      >
+        <a (click)="sendCategory(category.title)">
+          <ion-card>
+            <ion-card-header>
+              <ion-img
+                src="{{category.image}}"
+                style="
+                  height: 40px;
+                  width: 40px;
+                  margin-left: auto;
+                  margin-right: auto;
+                "
+              ></ion-img>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-label>{{category.title}}</ion-label>
+            </ion-card-content>
+          </ion-card>
+        </a>
       </ion-col>
     </ion-row>
   </ion-grid>
- 
-  <!-- <app-tabs></app-tabs> -->
 </ion-content>
