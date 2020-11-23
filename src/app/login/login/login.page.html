@@ -6,35 +6,62 @@
 
 <ion-content class="background">
   <ion-img src="../../../assets/icon/logo.png" class="logo"></ion-img>
-  <form class="form" [formGroup]="validationsForm" (ngSubmit)="loginUser(validationsForm.value)">
+  <form
+    class="form"
+    [formGroup]="validationsForm"
+    (ngSubmit)="loginUser(validationsForm.value)"
+  >
     <ion-item class="item">
-      <ion-input type="text" formControlName="email" placeholder="Email"></ion-input>
+      <ion-input
+        type="text"
+        formControlName="email"
+        placeholder="Email"
+      ></ion-input>
       <ion-icon name="person-circle-outline" class="icon"></ion-icon>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="error-message"
-              *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+        <div
+          class="error-message"
+          *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)"
+        >
           {{ validation.message }}
         </div>
       </ng-container>
     </div>
 
     <ion-item>
-      <ion-input type="password" class="formControl" formControlName="password" placeholder="Password" required></ion-input>
+      <ion-input
+        type="password"
+        class="formControl"
+        formControlName="password"
+        placeholder="Password"
+        required
+      ></ion-input>
       <ion-icon name="lock-closed-outline" class="icon"></ion-icon>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.password">
-        <div class="error-message rusak"
-              *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+        <div
+          class="error-message rusak"
+          *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)"
+        >
           {{ validation.message }}
         </div>
       </ng-container>
     </div>
 
-    <p class="title"><ion-button class="button" type="submit" [disabled]="!validationsForm.valid">Masuk</ion-button></p>
+    <p class="title">
+      <ion-button
+        class="button"
+        type="submit"
+        [disabled]="!validationsForm.valid"
+        >Masuk</ion-button
+      >
+    </p>
     <p class="title">Atau</p>
-    <p class="title"><ion-button (click)="goToRegisterPage()">Daftar</ion-button></p>
+    <p class="title">
+      <ion-button (click)="goToRegisterPage()">Daftar</ion-button>
+    </p>
   </form>
 </ion-content>

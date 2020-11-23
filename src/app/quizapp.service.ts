@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Router } from "@angular/router";
+import { NavController } from "@ionic/angular";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class QuizappService {
   category: string;
@@ -39,7 +39,7 @@ export class QuizappService {
 
   setCategory(clickedCategory: string) {
     this.category = clickedCategory;
-    this.navCtrl.navigateForward('/level1');
+    this.navCtrl.navigateForward("/level1");
   }
 
   getCategory() {

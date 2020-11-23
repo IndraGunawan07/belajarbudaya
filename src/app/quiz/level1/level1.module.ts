@@ -3,12 +3,11 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
-import { TabsComponent } from "src/app/tabs/tabs.component";
 import { Level1Page } from "./level1.page";
 import { Level1PageRoutingModule } from "./level1-routing.module";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, Level1PageRoutingModule],
-  declarations: [Level1Page, TabsComponent],
+  declarations: [Level1Page],
 })
 export class Level1PageModule {}
