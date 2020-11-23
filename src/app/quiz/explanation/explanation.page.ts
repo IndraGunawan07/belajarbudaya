@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { QuizappService } from 'src/app/quizapp.service';
 
 @Component({
@@ -10,6 +10,8 @@ import { QuizappService } from 'src/app/quizapp.service';
 })
 export class ExplanationPage implements OnInit {
 
+  @ViewChild('slides') slides: any;
+  slideOptions: any;
   quizExplain = [];
   quizData: SoalQuiz;
   title: string;
@@ -18,7 +20,7 @@ export class ExplanationPage implements OnInit {
 
 
 
-  constructor(private quizService: QuizappService, private alertController: AlertController, private router: Router) {
+  constructor(private quizService: QuizappService, private alertController: AlertController, private router: Router, private navigate: NavController) {
     this.quizData = {} as SoalQuiz;
   }
 
@@ -29,14 +31,12 @@ export class ExplanationPage implements OnInit {
       this.title = data.payload.data()['title'];
       this.desc = data.payload.data()['description'];
       this.imgUrl = data.payload.data()['imgUrl'];
-
-
-
-
-
-
-
     });
+  }
+  nextSlide() {
+    this.quizService.resetTime(2);
+    this.navigate.back();
+
   }
 
 }

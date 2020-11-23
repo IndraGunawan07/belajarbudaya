@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 export class QuizappService {
   category: string;
   idQuiz: any;
-
+  time: number;
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController
@@ -22,10 +22,17 @@ export class QuizappService {
     this.idQuiz = id;
   }
   getQuizExplain() {
-    const data = this.firestore.doc<any>('SoalQuiz/22vrDkn96VVypKi5Aeoz');
+    const data = this.firestore.doc<any>('SoalQuiz/' + this.idQuiz);
     return data.snapshotChanges();
   }
+  resetTime(time: number) {
+    this.time = time;
 
+  }
+  getResetTime() {
+
+    return this.time;
+  }
   getAllCategory() {
     return this.firestore.collection(`ListCategory`).snapshotChanges();
   }

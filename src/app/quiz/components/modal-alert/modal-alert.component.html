@@ -1,15 +1,20 @@
 
 <ion-content class="background">
-  <ion-list>
-    <h1>Jawaban Anda benar</h1>
-   <ion-grid>
-     <ion-row>
-       <ion-col> <ion-button type="button"color="primary"  routerLink="">Penjelasan</ion-button></ion-col>
-       <ion-col> <ion-button color="primary" (click)="nextSlide()">Selanjutnya</ion-button></ion-col>
-     </ion-row>
+  <div class="contain">
+    <ion-img
+    src="{{imgUrl}}" width="100px" height="100px"
+  ></ion-img>
+  <p class="title">{{title}}</p>
+  <div class="description ion-text-wrap">
+    {{desc}}
+  </div>
+
+  <p class="continueCenter">
+    <ion-button class="continue" (click)="dismiss()">Selanjutnya</ion-button>
+  </p>
+  </div>
+  
+
    
-   
-   </ion-grid>
-   
-  </ion-list>
+  
 </ion-content>

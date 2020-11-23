@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { Navigation, Router } from '@angular/router';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { QuizappService } from 'src/app/quizapp.service';
+import { ModalAlertComponent } from '../components/modal-alert/modal-alert.component';
 
 
 @Component({
@@ -22,9 +23,11 @@ export class Level1Page implements OnInit {
   clickAnswer: any = 0;
   interval: any;
   category: string;
+  openModal: string;
+  index: number;
 
 
-  constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router) {
+  constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
     this.quizData = {} as SoalQuiz;
 
   }
@@ -35,10 +38,13 @@ export class Level1Page implements OnInit {
   }
   ionViewWillEnter() {
     this.slides.lockSwipes(true);
-
+    if (this.index > 0) {
+      console.log('true');
+    }
     this.quizService.getAllQuiz().subscribe(data => {
 
       this.quizList = data.map(e => {
+
         return {
           id: e.payload.doc.id,
           isEdit: false,
@@ -56,7 +62,7 @@ export class Level1Page implements OnInit {
         };
 
       });
-
+      this.startTimer();
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
         this.category = this.quizService.getCategory();
@@ -70,11 +76,12 @@ export class Level1Page implements OnInit {
 
 
     });
-    this.startTimer();
+
     // this.startTimer();
   }
   startTimer() {
     var stop = 0;
+
     this.interval = setInterval(function () {
 
       this.timer--;
@@ -106,18 +113,42 @@ export class Level1Page implements OnInit {
     }
   }
   goToPenjelasan(id) {
+
+    // clearInterval(this.interval);
+    // const penjelasan = this.quizService.setQuizExplain(id);
+    // this.openModal = '1';
+    // this.nextSlide();
+    // const modal = await this.modalController.create({
+    //   component: ModalAlertComponent,
+    //   cssClass: 'modal-class',
+    //   backdropDismiss: false
+    // });
+
+    // return await modal.present();
     clearInterval(this.interval);
     const penjelasan = this.quizService.setQuizExplain(id);
-    this.router.navigateByUrl('/explanation');
-    // var id = this.quizList.
+    this.navigate.navigateForward('/explanation');
+    this.index = this.quizService.getResetTime();
+    console.log(this.index);
+    this.nextSlide2(this.index);
+  }
+  nextSlide2(index) {
+    this.slides.lockSwipes(false);
+    this.slides.slideTo(index, 2000);
+    this.timer = 30;
+    this.startTimer();
+    this.slides.lockSwipes(true);
   }
   nextSlide() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
+    this.timer = 15;
     this.startTimer();
     this.slides.lockSwipes(true);
   }
   async presentTrue(id) {
+
+
     const alert = await this.alertController.create({
       header: 'Jawaban Anda Benar',
       cssClass: 'alert-true',
@@ -136,8 +167,11 @@ export class Level1Page implements OnInit {
       ],
       backdropDismiss: false
     });
-
     await alert.present();
+
+
+
+
   }
   async presentFalse(id, answer) {
     const alert = await this.alertController.create({

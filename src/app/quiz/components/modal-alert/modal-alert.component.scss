@@ -1,7 +1,8 @@
 .background {
 
     display: block;
-    text-align: center;
+    --padding: 5%;
+
 }
 
 ion-list {
@@ -14,4 +15,11 @@ ion-list h1 {
     text-align: center;
     font-size: 32px;
     padding-bottom: 10px;
+}
+
+.contain {
+    --padding-top: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    --padding-bottom: 20px;
 }

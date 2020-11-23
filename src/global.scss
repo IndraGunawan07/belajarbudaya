@@ -57,7 +57,7 @@ ion-modal {
 .alert-false .alert-wrapper {
     padding-top: 1.125rem;
     --width: 100% !important;
-    --height: 25% !important;
+    --height: 40% !important;
     display: block;
 
 }
@@ -74,4 +74,27 @@ ion-modal {
     color: white;
     border-radius: 5px;
 
+}
+
+.modal-class {
+    height: 100vh;
+    --padding-top: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    --padding-bottom: 20px;
+}
+
+.modal-class .modal-wrapper {
+    height: 100%;
+    --padding-top: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    --padding-bottom: 20px;
+}
+
+.modal-class .modal-wrapper .container {
+    --padding-top: 20px;
+    --padding-end: 20px;
+    --padding-start: 20px;
+    --padding-bottom: 20px;
 }
