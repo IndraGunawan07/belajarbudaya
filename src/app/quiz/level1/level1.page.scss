@@ -18,7 +18,7 @@
     --padding-end: 40px;
     --padding-start: 40px;
     --padding-bottom: 15px;
-    margin-bottom: 10%;
+
     width: 90%;
     height: 80%;
     font-weight: bolder;
@@ -41,6 +41,7 @@ ion-grid {
 
 // }
 .user-live {
+    margin-top: 14%;
     width: 100%;
     background-color: #7A9EAF;
     color: white;
@@ -74,15 +75,19 @@ ion-grid {
     .option {
         margin-bottom: 0;
         --border-radius: 20px;
-        --padding-top: 15px;
+        --padding-top: 10px;
         --padding-end: 0;
         --padding-start: 0;
-        --padding-bottom: 15px;
+        --padding-bottom: 10px;
         width: 90%;
         height: 80%;
         font-weight: bolder;
         --border-color: #7A9EAF;
         color: #7A9EAF;
+    }
+
+    .user-live {
+        margin-top: 0;
     }
 
     .user-live h4 {
@@ -95,5 +100,6 @@ ion-grid {
         text-align: right;
         font-size: 20px;
     }
+
 
 }

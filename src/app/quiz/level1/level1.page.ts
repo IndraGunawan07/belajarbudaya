@@ -35,12 +35,11 @@ export class Level1Page implements OnInit {
   }
   ionViewWillEnter() {
     this.slides.lockSwipes(true);
-    var i = 0;
+
     this.quizService.getAllQuiz().subscribe(data => {
 
       this.quizList = data.map(e => {
         return {
-          index: i,
           id: e.payload.doc.id,
           isEdit: false,
           question: e.payload.doc.data()['question'],
@@ -63,8 +62,7 @@ export class Level1Page implements OnInit {
         this.category = this.quizService.getCategory();
         console.log(this.category);
         if (currentData.level == 1 && currentData.category == this.category) {
-          i++;
-          console.log('data' + i);
+
           return true;
         }
         return false;
@@ -108,7 +106,7 @@ export class Level1Page implements OnInit {
     }
   }
   goToPenjelasan(id) {
-    console.log("datass " + id);
+    clearInterval(this.interval);
     const penjelasan = this.quizService.setQuizExplain(id);
     this.router.navigateByUrl('/explanation');
     // var id = this.quizList.
