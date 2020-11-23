@@ -21,6 +21,8 @@ export class Level1Page implements OnInit {
   live: any = 3;
   clickAnswer: any = 0;
   interval: any;
+  category: string;
+
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router) {
     this.quizData = {} as SoalQuiz;
@@ -57,12 +59,12 @@ export class Level1Page implements OnInit {
       });
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
-        var category = this.quizService.getCategory();
-        console.log(category);
-        if (currentData.level == 1 && currentData.category == category) {
+        this.category = this.quizService.getCategory();
+        console.log(this.category);
+        if (currentData.level === 1 && currentData.category === this.category) {
           return true;
         }
-        return false
+        return false;
       });
 
     });
@@ -92,9 +94,9 @@ export class Level1Page implements OnInit {
 
   }
   selectAnswer(answer, question) {
-    console.log("jawaban" + answer);
-    console.log("coba" + question.trueAnswer);
-    if (answer == question.trueAnswer) {
+    console.log('jawaban' + answer);
+    console.log('coba' + question.trueAnswer);
+    if (answer === question.trueAnswer) {
       this.presentTrue();
     }
     else {
