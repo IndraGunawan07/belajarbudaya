@@ -56,20 +56,6 @@ const routes: Routes = [
   // },
 
   // {
-  //   path: "level-clear",
-  //   loadChildren: () =>
-  //     import("./quiz/level-clear/level-clear.module").then(
-  //       (m) => m.LevelClearPageModule
-  //     ),
-  // },
-  // {
-  //   path: "levellose",
-  //   loadChildren: () =>
-  //     import("./quiz/levellose/levellose.module").then(
-  //       (m) => m.LevellosePageModule
-  //     ),
-  // },
-  // {
   //   path: 'level2',
   //   loadChildren: () => import('./quiz/level2/level2.module').then( m => m.Level2PageModule)
   // },

@@ -10,6 +10,7 @@ export class QuizappService {
   category: string;
   idQuiz: string;
   time: number = 1;
+  indexTrue: number;
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController
@@ -31,7 +32,6 @@ export class QuizappService {
 
   }
   getResetTime() {
-
     return this.time;
   }
   getAllCategory() {
@@ -45,5 +45,14 @@ export class QuizappService {
 
   getCategory() {
     return this.category;
+  }
+
+  setIndexTrue(index) {
+    this.indexTrue = index;
+    console.log("indexService" + this.indexTrue);
+  }
+  getIndexTrue() {
+    console.log("indexService2" + this.indexTrue);
+    return this.indexTrue;
   }
 }
