@@ -66,6 +66,19 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: "explanation",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+              import("../quiz/explanation/explanation.module").then(
+                (m) => m.ExplanationPageModule
+              ),
+          },
+        ],
+
+      },
       { path: "", redirectTo: "/home", pathMatch: "full" },
     ],
   },
@@ -76,4 +89,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
