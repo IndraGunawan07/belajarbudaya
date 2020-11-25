@@ -32,6 +32,7 @@ export class Level1Page implements OnInit {
   category: string;
   openModal: string;
   index: number = 0;
+  indexTrue: number = 0;
 
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
@@ -45,9 +46,7 @@ export class Level1Page implements OnInit {
   }
   ionViewWillEnter() {
     this.slides.lockSwipes(true);
-    if (this.index > 0) {
-      console.log('true');
-    }
+
     this.quizService.getAllQuiz().subscribe(data => {
 
       this.quizList = data.map(e => {
@@ -71,18 +70,21 @@ export class Level1Page implements OnInit {
       });
 
       this.quizList = this.quizList.filter(currentData => {
-        console.log(currentData.level);
+
         this.category = this.quizService.getCategory();
-        console.log(this.category);
+
         if (currentData.level == 1 && currentData.category == this.category) {
-          console.log('data');
+
+
           return true;
         }
         return false;
       });
+
       this.questionId = this.quizList[this.index].id;
 
     });
+
     this.startTimer(this.startDuration);
 
 
@@ -119,10 +121,13 @@ export class Level1Page implements OnInit {
 
   }
   selectAnswer(answer, question) {
+
     console.log('jawaban' + answer);
     console.log('coba' + question.trueAnswer);
+    console.log('index ' + this.index);
     if (answer === question.trueAnswer) {
       clearInterval(this.interval);
+      this.indexTrue = this.indexTrue + 1;
       this.presentTrue(question.id);
     }
     else {
@@ -148,23 +153,38 @@ export class Level1Page implements OnInit {
     const penjelasan = this.quizService.setQuizExplain(id);
     this.navigate.navigateForward('/explanation');
     this.index = this.quizService.getResetTime();
-    console.log(this.index);
     this.nextSlide2(this.index);
   }
   nextSlide2(index) {
-    this.slides.lockSwipes(false);
-    this.slides.slideTo(index, 2000);
-    if (index != 0) {
-
-      this.startTimer(this.startDuration);
+    if (this.indexTrue == 10) {
+      this.router.navigateByUrl('/level-clear');
     }
-    this.slides.lockSwipes(true);
+    else if (this.live == 0) {
+      this.router.navigateByUrl('/levellose');
+    }
+    else {
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(index, 2000);
+      this.startTimer(this.startDuration);
+      this.slides.lockSwipes(true);
+    }
+
   }
   nextSlide() {
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.startTimer(this.startDuration);
-    this.slides.lockSwipes(true);
+
+    if (this.indexTrue == 10) {
+      this.router.navigateByUrl('/level-clear');
+    }
+    else if (this.live == 0) {
+      this.router.navigateByUrl('/levellose');
+    }
+    else {
+      this.slides.lockSwipes(false);
+      this.slides.slideNext();
+      this.startTimer(this.startDuration);
+      this.slides.lockSwipes(true);
+    }
+
   }
   async presentTrue(id) {
 
