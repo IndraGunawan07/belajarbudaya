@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 import { QuizappService } from "../quizapp.service";
 import { Howl, Howler } from "howler";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: "app-home",
@@ -20,7 +21,10 @@ export class HomePage implements OnInit {
     centeredSlides: true,
   };
   carousel_data: any;
-  constructor(private quizService: QuizappService) {
+  constructor(
+    private quizService: QuizappService,
+    private authSrv: AuthService
+    ) {
     this.sliderOne = {
       isBeginningSlide: true,
       isEndSlide: false,
@@ -66,6 +70,7 @@ export class HomePage implements OnInit {
         };
       });
     });
+    this.quizService.getUserDetail();
   }
 
   sendCategory(clickedCategory: string) {

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
+  user: any;
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router
@@ -44,6 +44,16 @@ export class AuthService {
         });
       }
     });
+  }
+
+  getCurrentUser(){
+    this.fireAuth.authState.subscribe(user => {
+      return user.email;
+    });
+  }
+
+  test(){
+    console.log('masuk');
   }
 
 }
