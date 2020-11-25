@@ -62,7 +62,7 @@ export class Level1Page implements OnInit {
         };
 
       });
-
+      this.startTimer();
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
         this.category = this.quizService.getCategory();
@@ -77,7 +77,7 @@ export class Level1Page implements OnInit {
 
     });
 
-    this.startTimer();
+    // this.startTimer();
   }
   startTimer() {
     var stop = 0;
@@ -112,25 +112,25 @@ export class Level1Page implements OnInit {
       this.presentFalse(question.id, question.trueAnswer);
     }
   }
-  async goToPenjelasan(id) {
+  goToPenjelasan(id) {
 
-    clearInterval(this.interval);
-    const penjelasan = this.quizService.setQuizExplain(id);
-    this.openModal = '1';
-    this.nextSlide();
-    const modal = await this.modalController.create({
-      component: ModalAlertComponent,
-      cssClass: 'modal-class',
-      backdropDismiss: false
-    });
-
-    return await modal.present();
     // clearInterval(this.interval);
     // const penjelasan = this.quizService.setQuizExplain(id);
-    // this.navigate.navigateForward('/explanation');
-    // this.index = this.quizService.getResetTime();
-    // console.log(this.index);
+    // this.openModal = '1';
     // this.nextSlide();
+    // const modal = await this.modalController.create({
+    //   component: ModalAlertComponent,
+    //   cssClass: 'modal-class',
+    //   backdropDismiss: false
+    // });
+
+    // return await modal.present();
+    clearInterval(this.interval);
+    const penjelasan = this.quizService.setQuizExplain(id);
+    this.navigate.navigateForward('/explanation');
+    this.index = this.quizService.getResetTime();
+    console.log(this.index);
+    this.nextSlide2(this.index);
   }
   nextSlide2(index) {
     this.slides.lockSwipes(false);
