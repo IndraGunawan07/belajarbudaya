@@ -81,6 +81,7 @@ export class LoginPage implements OnInit {
       color: "success",
     });
     toast.present();
+    this.validationsForm.reset();
   }
 
   async presentLoading() {
