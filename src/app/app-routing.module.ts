@@ -54,6 +54,7 @@ const routes: Routes = [
   //   loadChildren: () =>
   //     import("./aboutus/aboutus.module").then((m) => m.AboutusPageModule),
   // },
+
   // {
   //   path: "level-clear",
   //   loadChildren: () =>
@@ -80,4 +81,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

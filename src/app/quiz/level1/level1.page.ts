@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Navigation, Router } from '@angular/router';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 import { QuizappService } from 'src/app/quizapp.service';
 import { ModalAlertComponent } from '../components/modal-alert/modal-alert.component';
 
@@ -18,13 +19,19 @@ export class Level1Page implements OnInit {
   slideOptions: any;
   quizList = [];
   quizData: SoalQuiz;
-  timer: any = 15;
+  questionId: string;
+
+  time: BehaviorSubject<string> = new BehaviorSubject('00:00');
+  timer: number;
+  interval;
+  startDuration = 1;
+
   live: any = 3;
   clickAnswer: any = 0;
-  interval: any;
+
   category: string;
   openModal: string;
-  index: number;
+  index: number = 0;
 
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
@@ -62,41 +69,53 @@ export class Level1Page implements OnInit {
         };
 
       });
-      this.startTimer();
+
       this.quizList = this.quizList.filter(currentData => {
         console.log(currentData.level);
         this.category = this.quizService.getCategory();
         console.log(this.category);
         if (currentData.level == 1 && currentData.category == this.category) {
-
+          console.log('data');
           return true;
         }
         return false;
       });
-
+      this.questionId = this.quizList[this.index].id;
 
     });
+    this.startTimer(this.startDuration);
 
-    // this.startTimer();
+
   }
-  startTimer() {
-    var stop = 0;
+  startTimer(duration) {
+    // let stop = 0;
+    clearInterval(this.interval);
+    this.timer = duration * 15;
+    this.updateTimeValue();
+    this.interval = setInterval(() => {
+      this.updateTimeValue();
+    }, 1000);
 
-    this.interval = setInterval(function () {
+  }
+  updateTimeValue() {
+    let minutes: any = this.timer / 60;
+    let seconds: any = this.timer % 60;
 
-      this.timer--;
+    minutes = String('0' + Math.floor(minutes)).slice(-2);
+    seconds = String('0' + Math.floor(seconds)).slice(-2);
 
-      if (this.timer == 0) {
-        stop = 1;
-      }
-      if (stop == 1) {
+    const text = minutes + ':' + seconds;
+    this.time.next(text);
 
-        clearInterval(this.interval);
-        this.live -= 1;
-        this.presentTimeout();
-      }
+    --this.timer;
 
-    }.bind(this), 1000)
+    if (this.timer <= -1) {
+
+      // this.startTimer(this.startDuration);
+      clearInterval(this.interval);
+      this.live -= 1;
+      this.presentTimeout(this.questionId);
+    }
 
   }
   selectAnswer(answer, question) {
@@ -135,15 +154,16 @@ export class Level1Page implements OnInit {
   nextSlide2(index) {
     this.slides.lockSwipes(false);
     this.slides.slideTo(index, 2000);
-    this.timer = 15;
-    this.startTimer();
+    if (index != 0) {
+
+      this.startTimer(this.startDuration);
+    }
     this.slides.lockSwipes(true);
   }
   nextSlide() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
-    this.timer = 15;
-    this.startTimer();
+    this.startTimer(this.startDuration);
     this.slides.lockSwipes(true);
   }
   async presentTrue(id) {

@@ -8,7 +8,7 @@ import { NavController } from "@ionic/angular";
 })
 export class QuizappService {
   category: string;
-  idQuiz: any;
+  idQuiz: string;
   time: number = 1;
   constructor(
     private firestore: AngularFirestore,
@@ -20,6 +20,7 @@ export class QuizappService {
   }
   setQuizExplain(id) {
     this.idQuiz = id;
+    console.log(this.idQuiz);
   }
   getQuizExplain() {
     const data = this.firestore.doc<any>('SoalQuiz/' + this.idQuiz);
