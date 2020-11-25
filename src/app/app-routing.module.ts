@@ -55,13 +55,6 @@ const routes: Routes = [
   //     import("./aboutus/aboutus.module").then((m) => m.AboutusPageModule),
   // },
   // {
-  //   path: "explanation",
-  //   loadChildren: () =>
-  //     import("./quiz/explanation/explanation.module").then(
-  //       (m) => m.ExplanationPageModule
-  //     ),
-  // },
-  // {
   //   path: "level-clear",
   //   loadChildren: () =>
   //     import("./quiz/level-clear/level-clear.module").then(

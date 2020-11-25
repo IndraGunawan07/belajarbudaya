@@ -68,16 +68,10 @@ const routes: Routes = [
       },
       {
         path: "explanation",
-        children: [
-          {
-            path: "",
-            loadChildren: () =>
-              import("../quiz/explanation/explanation.module").then(
-                (m) => m.ExplanationPageModule
-              ),
-          },
-        ],
-
+        loadChildren: () =>
+          import("../quiz/explanation/explanation.module").then(
+            (m) => m.ExplanationPageModule
+          ),
       },
       { path: "", redirectTo: "/home", pathMatch: "full" },
     ],

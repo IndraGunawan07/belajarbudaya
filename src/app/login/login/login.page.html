@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="background">
   <ion-img src="../../../assets/icon/logo.png" class="logo"></ion-img>
   <form
@@ -22,7 +16,7 @@
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
         <div
-          class="error-message"
+          class="error-message errorMessage"
           *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)"
         >
           {{ validation.message }}
@@ -43,7 +37,7 @@
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.password">
         <div
-          class="error-message rusak"
+          class="error-message errorMessage"
           *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)"
         >
           {{ validation.message }}

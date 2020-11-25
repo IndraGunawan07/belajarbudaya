@@ -135,7 +135,7 @@ export class Level1Page implements OnInit {
   nextSlide2(index) {
     this.slides.lockSwipes(false);
     this.slides.slideTo(index, 2000);
-    this.timer = 30;
+    this.timer = 15;
     this.startTimer();
     this.slides.lockSwipes(true);
   }
