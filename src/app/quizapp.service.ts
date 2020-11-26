@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { NavController } from "@ionic/angular";
 import { AuthService } from './auth.service';
+
 @Injectable({
   providedIn: "root",
 })
@@ -13,7 +13,9 @@ export class QuizappService {
   indexTrue: number;
   userList = [];
   i: number = 0;
+  userEmail: string;
   currentLevel: string;
+  adat: boolean;
   constructor(
     private firestore: AngularFirestore,
     private navCtrl: NavController,
@@ -49,19 +51,5 @@ export class QuizappService {
 
   getCategory() {
     return this.category;
-  }
-
-  getUserDetail(){
-    // this.email = this.authSrv.getCurrentUser();
-    this.firestore.collection(`User`).snapshotChanges().subscribe((data) => {
-      this.userList = data.map(e => {
-       if ('jichu@gmail.com' === e.payload.doc.data()['email']){
-         this.currentLevel = e.payload.doc.data()['currentLevel'];
-         console.log(this.i);
-         this.i++;
-       }
-      // console.log(this.authSrv.getCurrentUser());
-      });
-    });
   }
 }

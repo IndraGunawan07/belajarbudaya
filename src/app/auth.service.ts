@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user: any;
+  email: any;
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router
@@ -47,9 +48,16 @@ export class AuthService {
   }
 
   getCurrentUser(){
-    this.fireAuth.authState.subscribe(user => {
-      return user.email;
-    });
+    // this.fireAuth.authState.subscribe(user => {
+    //   this.email = user.email;
+    //   // return this.email;
+    // });
+    // return await this.email;
+    // await this.fireAuth.user.subscribe(res => {
+    //   this.email = res;
+    // });
+    // return await this.email;
+    return this.fireAuth.user;
   }
 
   test(){
