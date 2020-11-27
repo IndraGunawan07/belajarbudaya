@@ -6,8 +6,9 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { BooleanValueAccessor, LoadingController, ToastController } from "@ionic/angular";
+import { LoadingController, ToastController } from "@ionic/angular";
 import { AuthService } from "src/app/auth.service";
+
 
 @Component({
   selector: "app-login",
@@ -17,7 +18,7 @@ import { AuthService } from "src/app/auth.service";
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   errorMessage: string = "";
-  exist: boolean = false;
+  exist: boolean = true;
   toast: any = null;
 
   validation_messages = {
@@ -70,13 +71,17 @@ export class LoginPage implements OnInit {
         this.errorMessage = err.message;
       }
     );
-    this.presentLoading(this.exist);
-    if (this.exist){
-      this.router.navigateByUrl("/home");
-    }
-    else{
-      this.router.navigateByUrl("/login");
-    }
+    setTimeout(() => {
+      this.presentLoading(this.exist);
+      setTimeout(() => {
+        if (this.exist){
+          this.router.navigateByUrl("/home");
+        }
+        else{
+          this.router.navigateByUrl("/login");
+        }
+      }, 1200);
+    }, 1000);
   }
 
   goToRegisterPage() {
@@ -111,6 +116,6 @@ export class LoginPage implements OnInit {
     await loading.present();
     setTimeout(() => {
       this.presentToast(param);
-    }, 500);
+    }, 1200);
   }
 }
