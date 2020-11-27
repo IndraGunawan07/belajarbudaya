@@ -8,6 +8,7 @@ import {
 import { Router } from "@angular/router";
 import { LoadingController, ToastController } from "@ionic/angular";
 import { AuthService } from "src/app/auth.service";
+import { Howl } from "howler";
 
 
 @Component({
@@ -80,6 +81,10 @@ export class LoginPage implements OnInit {
         else{
           this.router.navigateByUrl("/login");
         }
+        const sound = new Howl({
+          src: ['./assets/mp3/sample.mp3']
+        });
+        sound.play();
       }, 1200);
     }, 1000);
   }
