@@ -16,8 +16,18 @@ export class AddQuestionPage implements OnInit {
 
   ngOnInit() {
     this.fireStore.collection('SoalQuiz').add({
-      answer1: 'Bosku',
       question: 'Apa itu Bosku?',
+      answer1: 'Bosku',
+      answer2: '',
+      answer3: '',
+      answer4: '',
+      category: '',
+      description: '',
+      imgUrl: '',
+      level: '',
+      region: '',
+      title: '',
+      trueAnswer: '',
       // Other info you want to add here
     });
   }
