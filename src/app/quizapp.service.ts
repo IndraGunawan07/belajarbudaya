@@ -7,14 +7,17 @@ import { AuthService } from './auth.service';
   providedIn: "root",
 })
 export class QuizappService {
+  userList = [];
   category: string;
   idQuiz: string;
-  time: number = 1;
-  indexTrue: number;
-  userList = [];
-  i: number = 0;
   userEmail: string;
   currentLevel: string;
+
+  counterQuest: number;
+  indexTrue: number;
+  i: number = 0;
+  live: number;
+
   adat: boolean;
   constructor(
     private firestore: AngularFirestore,
@@ -33,23 +36,36 @@ export class QuizappService {
     const data = this.firestore.doc<any>('SoalQuiz/' + this.idQuiz);
     return data.snapshotChanges();
   }
-  resetTime(time: number) {
-    this.time = time;
+  setCounterQuest(counter: number) {
+    this.counterQuest = counter;
 
   }
-  getResetTime() {
-    return this.time;
+  getCounterQuest() {
+
+    return this.counterQuest;
+  }
+  setLive(live: number) {
+    this.live = live;
+
+  }
+  getLive() {
+    return this.live;
   }
   getAllCategory() {
     return this.firestore.collection(`ListCategory`).snapshotChanges();
   }
 
-  setCategory(clickedCategory: string) {
+  setCategorynLevel(clickedCategory, level) {
     this.category = clickedCategory;
+    this.currentLevel = level;
+    console.log('level sekarang', this.currentLevel);
     this.navCtrl.navigateForward("/level1");
   }
 
   getCategory() {
     return this.category;
+  }
+  getLevel() {
+    return this.currentLevel;
   }
 }

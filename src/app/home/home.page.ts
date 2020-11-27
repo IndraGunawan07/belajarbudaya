@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
     private quizService: QuizappService,
     private authSrv: AuthService,
     private firestore: AngularFirestore
-    ) {
+  ) {
     this.sliderOne = {
       isBeginningSlide: true,
       isEndSlide: false,
@@ -85,28 +85,28 @@ export class HomePage implements OnInit {
     });
   }
 
-  ionViewDidEnter(){
-      this.authSrv.getCurrentUser().subscribe(res => {
-        this.firestore.collection(`User`).snapshotChanges().subscribe((data) => {
-          this.userList = data.map(e => {
-           if (res.email === e.payload.doc.data()['email']){
-             this.nama = e.payload.doc.data()['nama'];
-             this.email = e.payload.doc.data()['email'];
-             this.currentLevel = e.payload.doc.data()['currentLevel'];
-             this.tari = e.payload.doc.data()['tari'];
-             this.musik = e.payload.doc.data()['musik'];
-             this.rumah = e.payload.doc.data()['rumah'];
-             this.adat = e.payload.doc.data()['adat'];
-             this.makanan = e.payload.doc.data()['makanan'];
-             this.wisata = e.payload.doc.data()['wisata'];
-           }
-          });
+  ionViewDidEnter() {
+    this.authSrv.getCurrentUser().subscribe(res => {
+      this.firestore.collection(`User`).snapshotChanges().subscribe((data) => {
+        this.userList = data.map(e => {
+          if (res.email === e.payload.doc.data()['email']) {
+            this.nama = e.payload.doc.data()['nama'];
+            this.email = e.payload.doc.data()['email'];
+            this.currentLevel = e.payload.doc.data()['currentLevel'];
+            this.tari = e.payload.doc.data()['tari'];
+            this.musik = e.payload.doc.data()['musik'];
+            this.rumah = e.payload.doc.data()['rumah'];
+            this.adat = e.payload.doc.data()['adat'];
+            this.makanan = e.payload.doc.data()['makanan'];
+            this.wisata = e.payload.doc.data()['wisata'];
+          }
         });
       });
+    });
   }
 
   sendCategory(clickedCategory: string) {
     console.log(clickedCategory);
-    this.quizService.setCategory(clickedCategory);
+    this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
   }
 }

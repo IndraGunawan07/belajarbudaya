@@ -33,7 +33,11 @@ const routes: Routes = [
     path: "splash",
     loadChildren: () =>
       import("./login/splash/splash.module").then((m) => m.SplashPageModule),
+  },  {
+    path: 'add-question',
+    loadChildren: () => import('./add-question/add-question.module').then( m => m.AddQuestionPageModule)
   },
+
   // {
   //   path: "settings",
   //   loadChildren: () =>

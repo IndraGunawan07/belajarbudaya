@@ -17,7 +17,8 @@ export class ExplanationPage implements OnInit {
   title: string;
   desc: string;
   imgUrl: string;
-
+  counter: number;
+  live: number;
 
 
   constructor(private quizService: QuizappService, private alertController: AlertController, private router: Router, private navigate: NavController) {
@@ -25,6 +26,8 @@ export class ExplanationPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+  ionViewDidEnter() {
     console.log(this.quizService.getQuizExplain());
     this.quizService.getQuizExplain().subscribe(data => {
 
@@ -32,10 +35,23 @@ export class ExplanationPage implements OnInit {
       this.desc = data.payload.data()['description'];
       this.imgUrl = data.payload.data()['imgUrl'];
     });
+
   }
   nextSlide() {
-    this.quizService.resetTime(2);
-    this.navigate.back();
+    this.counter = this.quizService.getCounterQuest();
+    this.live = this.quizService.getLive();
+
+    if (this.live >= 0 && this.counter === 10) {
+      this.router.navigateByUrl('/level-clear');
+    }
+    else if (this.live === 0) {
+      console.log('false');
+      this.router.navigateByUrl('/levellose');
+    }
+    else {
+
+      this.navigate.back();
+    }
 
   }
 

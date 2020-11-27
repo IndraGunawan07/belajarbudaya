@@ -35,7 +35,7 @@ export class ModalAlertComponent implements OnInit {
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
-    this.quizService.resetTime(1);
+
     this.modalCtrl.dismiss();
   }
 

@@ -26,13 +26,15 @@ export class Level1Page implements OnInit {
   interval;
   startDuration = 1;
 
-  live: any = 3;
+  live: number = 3;
   clickAnswer: any = 0;
 
+
   category: string;
+  currentLevel: string;
   openModal: string;
   index: number = 0;
-  indexTrue: number = 0;
+  numberQuestion: number = 0;
 
 
   constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
@@ -44,7 +46,7 @@ export class Level1Page implements OnInit {
 
 
   }
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.slides.lockSwipes(true);
 
     this.quizService.getAllQuiz().subscribe(data => {
@@ -72,10 +74,10 @@ export class Level1Page implements OnInit {
       this.quizList = this.quizList.filter(currentData => {
 
         this.category = this.quizService.getCategory();
+        this.currentLevel = this.quizService.getLevel();
 
-        if (currentData.level == 1 && currentData.category == this.category) {
 
-
+        if (currentData.level == this.currentLevel && currentData.category == this.category) {
           return true;
         }
         return false;
@@ -87,18 +89,23 @@ export class Level1Page implements OnInit {
 
     this.startTimer(this.startDuration);
 
+  }
+  ionViewWillLeave() {
+    clearInterval(this.interval);
 
   }
+
   startTimer(duration) {
     // let stop = 0;
     clearInterval(this.interval);
-    this.timer = duration * 15;
+    this.timer = duration * 20;
     this.updateTimeValue();
     this.interval = setInterval(() => {
       this.updateTimeValue();
     }, 1000);
 
   }
+
   updateTimeValue() {
     let minutes: any = this.timer / 60;
     let seconds: any = this.timer % 60;
@@ -113,30 +120,32 @@ export class Level1Page implements OnInit {
 
     if (this.timer <= -1) {
 
-      // this.startTimer(this.startDuration);
       clearInterval(this.interval);
       this.live -= 1;
       this.presentTimeout(this.questionId);
     }
 
   }
+
   selectAnswer(answer, question) {
 
-    console.log('jawaban' + answer);
-    console.log('coba' + question.trueAnswer);
-    console.log('index ' + this.index);
+
+    this.quizService.setLive(this.live);
+    this.numberQuestion = this.numberQuestion + 1;
     if (answer === question.trueAnswer) {
       clearInterval(this.interval);
-      this.indexTrue = this.indexTrue + 1;
       this.presentTrue(question.id);
     }
     else {
       this.live -= 1;
       clearInterval(this.interval);
+      this.quizService.setLive(this.live);
+      console.log('getLivefalce: ', this.quizService.getLive());
       this.presentFalse(question.id, question.trueAnswer);
     }
   }
-  goToPenjelasan(id) {
+
+  goToExplanation(id) {
 
     // clearInterval(this.interval);
     // const penjelasan = this.quizService.setQuizExplain(id);
@@ -150,32 +159,31 @@ export class Level1Page implements OnInit {
 
     // return await modal.present();
     clearInterval(this.interval);
-    const penjelasan = this.quizService.setQuizExplain(id);
+
+    this.quizService.setQuizExplain(id);
+
     this.navigate.navigateForward('/explanation');
-    this.index = this.quizService.getResetTime();
-    this.nextSlide2(this.index);
+    this.quizService.setCounterQuest(this.numberQuestion);
+
+
+
+    this.nextSlide2();
   }
-  nextSlide2(index) {
-    if (this.indexTrue == 10) {
-      this.router.navigateByUrl('/level-clear');
-    }
-    else if (this.live == 0) {
-      this.router.navigateByUrl('/levellose');
-    }
-    else {
-      this.slides.lockSwipes(false);
-      this.slides.slideTo(index, 2000);
-      this.startTimer(this.startDuration);
-      this.slides.lockSwipes(true);
-    }
+  nextSlide2() {
+    console.log('life ', this.live);
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.startTimer(this.startDuration);
+    this.slides.lockSwipes(true);
 
   }
   nextSlide() {
 
-    if (this.indexTrue == 10) {
+    if (this.live >= 0 && this.numberQuestion === 10) {
       this.router.navigateByUrl('/level-clear');
+
     }
-    else if (this.live == 0) {
+    else if (this.live === 0) {
       this.router.navigateByUrl('/levellose');
     }
     else {
@@ -187,8 +195,6 @@ export class Level1Page implements OnInit {
 
   }
   async presentTrue(id) {
-
-
     const alert = await this.alertController.create({
       header: 'Jawaban Anda Benar',
       cssClass: 'alert-true',
@@ -197,7 +203,7 @@ export class Level1Page implements OnInit {
           text: 'Penjelasan',
 
           cssClass: 'buttonColor',
-          handler: () => this.goToPenjelasan(id)
+          handler: () => this.goToExplanation(id)
         },
         {
           text: 'Selanjutnya',
@@ -208,8 +214,6 @@ export class Level1Page implements OnInit {
       backdropDismiss: false
     });
     await alert.present();
-
-
 
 
   }
@@ -223,7 +227,7 @@ export class Level1Page implements OnInit {
           text: 'Penjelasan',
 
           cssClass: 'buttonColor',
-          handler: () => this.goToPenjelasan(id)
+          handler: () => this.goToExplanation(id)
         },
         {
           text: 'Selanjutnya',
@@ -244,7 +248,7 @@ export class Level1Page implements OnInit {
         {
           text: 'Penjelasan',
           cssClass: 'buttonColor',
-          handler: () => this.goToPenjelasan(id)
+          handler: () => this.goToExplanation(id)
         },
         {
           text: 'Selanjutnya',
