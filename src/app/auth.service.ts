@@ -48,15 +48,6 @@ export class AuthService {
   }
 
   getCurrentUser(){
-    // this.fireAuth.authState.subscribe(user => {
-    //   this.email = user.email;
-    //   // return this.email;
-    // });
-    // return await this.email;
-    // await this.fireAuth.user.subscribe(res => {
-    //   this.email = res;
-    // });
-    // return await this.email;
     return this.fireAuth.user;
   }
 

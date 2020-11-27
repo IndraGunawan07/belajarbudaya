@@ -6,7 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
-import { LoadingController, ToastController } from "@ionic/angular";
+import { BooleanValueAccessor, LoadingController, ToastController } from "@ionic/angular";
 import { AuthService } from "src/app/auth.service";
 
 @Component({
@@ -17,6 +17,8 @@ import { AuthService } from "src/app/auth.service";
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   errorMessage: string = "";
+  exist: boolean = false;
+  toast: any = null;
 
   validation_messages = {
     email: [
@@ -57,34 +59,50 @@ export class LoginPage implements OnInit {
   }
 
   loginUser(value) {
-    this.presentLoading();
     this.authSrv.loginUser(value).then(
       (res) => {
         console.log(res);
+        this.exist = true;
         this.errorMessage = "";
-        this.router.navigateByUrl("/home");
       },
       (err) => {
+        this.exist = false;
         this.errorMessage = err.message;
       }
     );
+    this.presentLoading(this.exist);
+    if (this.exist){
+      this.router.navigateByUrl("/home");
+    }
+    else{
+      this.router.navigateByUrl("/login");
+    }
   }
 
   goToRegisterPage() {
     this.router.navigateByUrl("/register");
   }
 
-  async presentToast() {
-    const toast = await this.toastCtrl.create({
-      message: "Signed In",
-      duration: 2000,
-      color: "success",
-    });
-    toast.present();
+  async presentToast(param: boolean) {
+    if (param){
+      this.toast = await this.toastCtrl.create({
+        message: "Signed In",
+        duration: 2000,
+        color: "success",
+      });
+    }
+    else{
+      this.toast = await this.toastCtrl.create({
+        message: "Email or password is wrong",
+        duration: 2000,
+        color: "danger",
+      });
+    }
+    this.toast.present();
     this.validationsForm.reset();
   }
 
-  async presentLoading() {
+  async presentLoading(param: boolean) {
     const loading = await this.loadingCtrl.create({
       message: "Signing in...",
       duration: 500,
@@ -92,7 +110,7 @@ export class LoginPage implements OnInit {
 
     await loading.present();
     setTimeout(() => {
-      this.presentToast();
+      this.presentToast(param);
     }, 500);
   }
 }
