@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
@@ -75,10 +75,11 @@ export class LoginPage implements OnInit {
     setTimeout(() => {
       this.presentLoading(this.exist);
       setTimeout(() => {
-        if (this.exist){
+        if (this.exist) {
+
           this.router.navigateByUrl("/home");
         }
-        else{
+        else {
           this.router.navigateByUrl("/login");
         }
         const sound = new Howl({
@@ -94,14 +95,14 @@ export class LoginPage implements OnInit {
   }
 
   async presentToast(param: boolean) {
-    if (param){
+    if (param) {
       this.toast = await this.toastCtrl.create({
         message: "Signed In",
         duration: 2000,
         color: "success",
       });
     }
-    else{
+    else {
       this.toast = await this.toastCtrl.create({
         message: "Email or password is wrong",
         duration: 2000,

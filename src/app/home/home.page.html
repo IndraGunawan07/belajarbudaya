@@ -17,25 +17,35 @@
     </ion-row>
     <ion-row style="text-align: center">
       <ion-col size="2"
-        ><div class="level">
+        ><div class="level" *ngIf="currentLevel === '1'">
           <ion-button color="secondary">1</ion-button>
-        </div></ion-col
+        </div>
+        <div class="level" *ngIf="currentLevel !== '1'">
+          <ion-button>1</ion-button>
+        </div>
+        </ion-col
       >
+      <ion-col size="2">
+        <div class="level" *ngIf="currentLevel === '2'"><ion-button color="secondary">2</ion-button></div>
+        <div class="level" *ngIf="currentLevel !== '2'"><ion-button>2</ion-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="level" *ngIf="currentLevel === '3'"><ion-button color="secondary">3</ion-button></div>
+        <div class="level" *ngIf="currentLevel !== '3'"><ion-button>3</ion-button></div>
+      </ion-col>
       <ion-col size="2"
-        ><div class="level"><ion-button>2</ion-button></div></ion-col
+        >
+        <div class="level" *ngIf="currentLevel === '4'"><ion-button color="secondary">4</ion-button></div>
+        <div class="level" *ngIf="currentLevel !== '4'"><ion-button>4</ion-button></div></ion-col
       >
-      <ion-col size="2"
-        ><div class="level"><ion-button>3</ion-button></div></ion-col
-      >
-      <ion-col size="2"
-        ><div class="level"><ion-button>4</ion-button></div></ion-col
-      >
-      <ion-col size="2"
-        ><div class="level"><ion-button>5</ion-button></div></ion-col
-      >
-      <ion-col size="2"
-        ><div class="level"><ion-button>6</ion-button></div></ion-col
-      >
+      <ion-col size="2">
+        <div class="level" *ngIf="currentLevel === '5'"><ion-button color="secondary">5</ion-button></div>
+        <div class="level" *ngIf="currentLevel !== '5'"><ion-button>5</ion-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="level" *ngIf="currentLevel === '6'"><ion-button color="secondary">6</ion-button></div>
+        <div class="level" *ngIf="currentLevel !== '6'"><ion-button>6</ion-button></div>
+      </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid>

@@ -179,7 +179,8 @@ export class Level1Page implements OnInit {
   }
   nextSlide() {
 
-    if (this.live >= 0 && this.numberQuestion === 10) {
+    if (this.live >= 0 && this.numberQuestion === 5) {
+
       this.router.navigateByUrl('/level-clear');
 
     }

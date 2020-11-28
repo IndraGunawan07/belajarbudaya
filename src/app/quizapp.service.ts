@@ -65,6 +65,19 @@ export class QuizappService {
   getCategory() {
     return this.category;
   }
+  updateCurrentLevel(id, currentLvl) {
+    this.firestore.collection(`User`).doc(id).update({
+      currentLevel: currentLvl,
+      musik: false,
+      tari: false,
+      wisata: false,
+      makanan: false,
+      adat: false,
+      rumah: false,
+    });
+
+  }
+
   getLevel() {
     return this.currentLevel;
   }

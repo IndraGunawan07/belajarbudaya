@@ -26,6 +26,8 @@ export class HomePage implements OnInit {
   nama: string;
   email: string;
   currentLevel: string;
+
+  idUser: string;
   tari: boolean;
   musik: boolean;
   wisata: boolean;
@@ -90,6 +92,7 @@ export class HomePage implements OnInit {
       this.firestore.collection(`User`).snapshotChanges().subscribe((data) => {
         this.userList = data.map(e => {
           if (res.email === e.payload.doc.data()['email']) {
+            this.idUser = e.payload.doc.id;
             this.nama = e.payload.doc.data()['nama'];
             this.email = e.payload.doc.data()['email'];
             this.currentLevel = e.payload.doc.data()['currentLevel'];
@@ -99,6 +102,8 @@ export class HomePage implements OnInit {
             this.adat = e.payload.doc.data()['adat'];
             this.makanan = e.payload.doc.data()['makanan'];
             this.wisata = e.payload.doc.data()['wisata'];
+
+
           }
         });
       });
