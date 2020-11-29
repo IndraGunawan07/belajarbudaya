@@ -7,8 +7,8 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoadingController, ToastController } from "@ionic/angular";
+import { AudioService } from 'src/app/audio.service';
 import { AuthService } from "src/app/auth.service";
-import { Howl } from "howler";
 
 
 @Component({
@@ -21,6 +21,7 @@ export class LoginPage implements OnInit {
   errorMessage: string = "";
   exist: boolean = true;
   toast: any = null;
+  disabledParam: boolean = true;
 
   validation_messages = {
     email: [
@@ -41,7 +42,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private audioSrv: AudioService
   ) { }
 
   ngOnInit() {
@@ -76,18 +78,14 @@ export class LoginPage implements OnInit {
       this.presentLoading(this.exist);
       setTimeout(() => {
         if (this.exist) {
-
+          this.audioSrv.playAudio();
           this.router.navigateByUrl("/home");
         }
         else {
           this.router.navigateByUrl("/login");
         }
-        const sound = new Howl({
-          src: ['./assets/mp3/sample.mp3']
-        });
-        sound.play();
-      }, 1200);
-    }, 1000);
+      }, 600);
+    }, 800);
   }
 
   goToRegisterPage() {

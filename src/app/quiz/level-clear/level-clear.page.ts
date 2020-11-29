@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
-
 import { AuthService } from 'src/app/auth.service';
 import { QuizappService } from 'src/app/quizapp.service';
 
