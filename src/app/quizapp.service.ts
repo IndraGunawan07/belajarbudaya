@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { NavController } from "@ionic/angular";
-import { AuthService } from './auth.service';
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -23,7 +23,7 @@ export class QuizappService {
     private firestore: AngularFirestore,
     private navCtrl: NavController,
     private authSrv: AuthService
-  ) { }
+  ) {}
 
   getAllQuiz() {
     return this.firestore.collection(`SoalQuiz`).snapshotChanges();
@@ -33,20 +33,17 @@ export class QuizappService {
     console.log(this.idQuiz);
   }
   getQuizExplain() {
-    const data = this.firestore.doc<any>('SoalQuiz/' + this.idQuiz);
+    const data = this.firestore.doc<any>("SoalQuiz/" + this.idQuiz);
     return data.snapshotChanges();
   }
   setCounterQuest(counter: number) {
     this.counterQuest = counter;
-
   }
   getCounterQuest() {
-
     return this.counterQuest;
   }
   setLive(live: number) {
     this.live = live;
-
   }
   getLive() {
     return this.live;
@@ -58,7 +55,7 @@ export class QuizappService {
   setCategorynLevel(clickedCategory, level) {
     this.category = clickedCategory;
     this.currentLevel = level;
-    console.log('level sekarang', this.currentLevel);
+    console.log("level sekarang", this.currentLevel);
     this.navCtrl.navigateForward("/level1");
   }
 
@@ -75,7 +72,6 @@ export class QuizappService {
       adat: false,
       rumah: false,
     });
-
   }
 
   getLevel() {

@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonSlides } from "@ionic/angular";
 import { QuizappService } from "../quizapp.service";
-import { Howl, Howler } from "howler";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { AuthService } from '../auth.service';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-home",
@@ -63,19 +62,6 @@ export class HomePage implements OnInit {
     };
   }
 
-  start() {
-    var sound = new Howl({
-      src: ["./assets/mp3/sound.mp3"],
-      onplayerror: function () {
-        sound.once("unlock", function () {
-          sound.play();
-        });
-      },
-    });
-
-    sound.play();
-  }
-
   ngOnInit() {
     this.quizService.getAllCategory().subscribe((data) => {
       this.categoryData = data.map((e) => {
@@ -88,25 +74,26 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.authSrv.getCurrentUser().subscribe(res => {
-      this.firestore.collection(`User`).snapshotChanges().subscribe((data) => {
-        this.userList = data.map(e => {
-          if (res.email === e.payload.doc.data()['email']) {
-            this.idUser = e.payload.doc.id;
-            this.nama = e.payload.doc.data()['nama'];
-            this.email = e.payload.doc.data()['email'];
-            this.currentLevel = e.payload.doc.data()['currentLevel'];
-            this.tari = e.payload.doc.data()['tari'];
-            this.musik = e.payload.doc.data()['musik'];
-            this.rumah = e.payload.doc.data()['rumah'];
-            this.adat = e.payload.doc.data()['adat'];
-            this.makanan = e.payload.doc.data()['makanan'];
-            this.wisata = e.payload.doc.data()['wisata'];
-
-
-          }
+    this.authSrv.getCurrentUser().subscribe((res) => {
+      this.firestore
+        .collection(`User`)
+        .snapshotChanges()
+        .subscribe((data) => {
+          this.userList = data.map((e) => {
+            if (res.email === e.payload.doc.data()["email"]) {
+              this.idUser = e.payload.doc.id;
+              this.nama = e.payload.doc.data()["nama"];
+              this.email = e.payload.doc.data()["email"];
+              this.currentLevel = e.payload.doc.data()["currentLevel"];
+              this.tari = e.payload.doc.data()["tari"];
+              this.musik = e.payload.doc.data()["musik"];
+              this.rumah = e.payload.doc.data()["rumah"];
+              this.adat = e.payload.doc.data()["adat"];
+              this.makanan = e.payload.doc.data()["makanan"];
+              this.wisata = e.payload.doc.data()["wisata"];
+            }
+          });
         });
-      });
     });
   }
 

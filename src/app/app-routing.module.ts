@@ -33,9 +33,13 @@ const routes: Routes = [
     path: "splash",
     loadChildren: () =>
       import("./login/splash/splash.module").then((m) => m.SplashPageModule),
-  },  {
-    path: 'add-question',
-    loadChildren: () => import('./add-question/add-question.module').then( m => m.AddQuestionPageModule)
+  },
+  {
+    path: "add-question",
+    loadChildren: () =>
+      import("./add-question/add-question.module").then(
+        (m) => m.AddQuestionPageModule
+      ),
   },
 
   // {
@@ -49,19 +53,9 @@ const routes: Routes = [
   //     import("./profile/profile.module").then((m) => m.ProfilePageModule),
   // },
   // {
-  //   path: "level3",
-  //   loadChildren: () =>
-  //     import("./quiz/level3/level3.module").then((m) => m.Level3PageModule),
-  // },
-  // {
   //   path: "aboutus",
   //   loadChildren: () =>
   //     import("./aboutus/aboutus.module").then((m) => m.AboutusPageModule),
-  // },
-
-  // {
-  //   path: 'level2',
-  //   loadChildren: () => import('./quiz/level2/level2.module').then( m => m.Level2PageModule)
   // },
 ];
 
@@ -71,4 +65,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -7,9 +7,8 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoadingController, ToastController } from "@ionic/angular";
-import { AudioService } from 'src/app/audio.service';
 import { AuthService } from "src/app/auth.service";
-
+import { UtilsService } from "src/app/utils.service";
 
 @Component({
   selector: "app-login",
@@ -19,9 +18,9 @@ import { AuthService } from "src/app/auth.service";
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   errorMessage: string = "";
-  exist: boolean = true;
+  exist: boolean = false;
   toast: any = null;
-  disabledParam: boolean = true;
+  disabledButton: boolean = false;
 
   validation_messages = {
     email: [
@@ -39,12 +38,12 @@ export class LoginPage implements OnInit {
 
   constructor(
     private authSrv: AuthService,
+    private utilsSrv: UtilsService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastCtrl: ToastController,
-    private loadingCtrl: LoadingController,
-    private audioSrv: AudioService
-  ) { }
+    private loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
@@ -63,9 +62,9 @@ export class LoginPage implements OnInit {
   }
 
   loginUser(value) {
+    this.disabledButton = true;
     this.authSrv.loginUser(value).then(
-      (res) => {
-        console.log(res);
+      () => {
         this.exist = true;
         this.errorMessage = "";
       },
@@ -78,10 +77,10 @@ export class LoginPage implements OnInit {
       this.presentLoading(this.exist);
       setTimeout(() => {
         if (this.exist) {
-          this.audioSrv.playAudio();
+          this.utilsSrv.playBackgroundMusic();
           this.router.navigateByUrl("/home");
-        }
-        else {
+        } else {
+          this.disabledButton = false;
           this.router.navigateByUrl("/login");
         }
       }, 600);
@@ -99,8 +98,7 @@ export class LoginPage implements OnInit {
         duration: 2000,
         color: "success",
       });
-    }
-    else {
+    } else {
       this.toast = await this.toastCtrl.create({
         message: "Email or password is wrong",
         duration: 2000,

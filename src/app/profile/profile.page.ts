@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Router } from "@angular/router";
+import { AuthService } from "../auth.service";
+import { UtilsService } from "../utils.service";
 
 @Component({
   selector: "app-profile",
@@ -10,14 +11,15 @@ import { AuthService } from '../auth.service';
 export class ProfilePage implements OnInit {
   constructor(
     private authSrv: AuthService,
+    private utilsSrv: UtilsService,
     private router: Router
   ) {}
 
   ngOnInit() {}
 
-  logout(){
-    console.log('keluar');
+  logout() {
     this.authSrv.logoutUser();
-    this.router.navigateByUrl('/login');
+    this.utilsSrv.stopBackgroundMusic();
+    this.router.navigateByUrl("/login");
   }
 }
