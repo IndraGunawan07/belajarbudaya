@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -18,7 +18,7 @@ import { UtilsService } from "src/app/utils.service";
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   errorMessage: string = "";
-  exist: boolean = false;
+  exist: boolean = true;
   toast: any = null;
   disabledButton: boolean = false;
 
@@ -73,6 +73,7 @@ export class LoginPage implements OnInit {
         this.errorMessage = err.message;
       }
     );
+
     setTimeout(() => {
       this.presentLoading(this.exist);
       setTimeout(() => {

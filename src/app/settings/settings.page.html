@@ -9,7 +9,13 @@
 
 <ion-content class="background" lines="none">
   <ion-item color="tertiary">
-    <ion-range value="0" color="secondary">
+    <ion-range
+      value="{{musicVolume}}"
+      min="0"
+      max="100"
+      (ionChange)="setMusicVolume($event.detail.value)"
+      color="secondary"
+    >
       <ion-icon
         slot="start"
         size="small"
@@ -39,8 +45,4 @@
       checked
     ></ion-toggle>
   </ion-item>
-
-  <ion-button expand="block" color="tertiary">
-    <ion-label color="secondary">Simpan</ion-label>
-  </ion-button>
 </ion-content>

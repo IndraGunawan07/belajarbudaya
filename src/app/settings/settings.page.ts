@@ -7,11 +7,18 @@ import { UtilsService } from "../utils.service";
   styleUrls: ["./settings.page.scss"],
 })
 export class SettingsPage implements OnInit {
-  constructor(private utilsSrv: UtilsService) {}
+  musicVolume: number = 100;
+  constructor(private utilsSrv: UtilsService) {
+    this.musicVolume = this.utilsSrv.getMusicVolume();
+  }
 
   ngOnInit() {}
 
   getProvince() {
     this.utilsSrv.getProvince();
+  }
+
+  setMusicVolume(value) {
+    this.utilsSrv.setMusicVolume(value);
   }
 }

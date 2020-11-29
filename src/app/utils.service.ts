@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Howl } from "howler";
+import { Howl, Howler } from "howler";
 
 @Injectable({
   providedIn: "root",
@@ -7,7 +7,16 @@ import { Howl } from "howler";
 export class UtilsService {
   showDescription: boolean = true;
   sound = new Howl({
-    src: ["./assets/mp3/sample.mp3"],
+    src: [
+      "https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/backgroundMusic%2Fsound.mp3?alt=media&token=4ae771ab-c5ff-4979-9ae4-a0488bb8cf69",
+    ],
+    xhr: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer:" + "4ae771ab-c5ff-4979-9ae4-a0488bb8cf69",
+      },
+      withCredentials: true,
+    },
     loop: true,
   });
   provinceName: any;
@@ -37,6 +46,7 @@ export class UtilsService {
 
   setMusicVolume(musicVolume: number) {
     this.musicVolume = musicVolume;
+    Howler.volume(this.musicVolume / 100);
   }
 
   getProvince() {
