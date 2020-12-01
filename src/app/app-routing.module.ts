@@ -41,6 +41,11 @@ const routes: Routes = [
         (m) => m.AddQuestionPageModule
       ),
   },
+  {
+    path: 'description/:key',
+    loadChildren: () => import('./description/description.module').then( m => m.DescriptionPageModule)
+  },
+
 
   // {
   //   path: "settings",

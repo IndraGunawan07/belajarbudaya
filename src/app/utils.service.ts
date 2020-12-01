@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Howl, Howler } from "howler";
 
 @Injectable({
@@ -22,7 +23,9 @@ export class UtilsService {
   provinceName: any;
   musicVolume: number = 100;
 
-  constructor() {}
+  constructor(
+    private firestore: AngularFirestore,
+  ) {}
 
   getShowDescriptionStatus() {
     return this.showDescription;
@@ -89,5 +92,14 @@ export class UtilsService {
         }
       }
     }
+  }
+
+  getBanner(){
+    return this.firestore.collection(`Banner`).snapshotChanges();
+  }
+
+  getDescription(id){
+    const data = this.firestore.doc<any>("Banner/" + id);
+    return data.snapshotChanges();
   }
 }

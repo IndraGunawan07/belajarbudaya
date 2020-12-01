@@ -9,8 +9,8 @@
     <ion-row>
       <ion-col size="12">
         <ion-slides pager="false" [options]="slideOptions">
-          <ion-slide *ngFor="let s of sliderOne.slidesItems">
-            <img src="{{s.image}}" class="carouselImage" />
+          <ion-slide *ngFor="let s of sliderOne" >
+            <img src="{{s.imageURL}}" class="carouselImage" routerLink="/description/{{s.id}}" />
           </ion-slide>
         </ion-slides>
       </ion-col>
