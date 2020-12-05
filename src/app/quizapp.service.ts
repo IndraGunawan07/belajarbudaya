@@ -62,6 +62,7 @@ export class QuizappService {
   getCategory() {
     return this.category;
   }
+
   updateCurrentLevel(id, currentLvl) {
     this.firestore.collection(`User`).doc(id).update({
       currentLevel: currentLvl,

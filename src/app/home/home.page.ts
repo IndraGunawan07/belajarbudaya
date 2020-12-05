@@ -34,7 +34,7 @@ export class HomePage implements OnInit {
     private quizService: QuizappService,
     private authSrv: AuthService,
     private firestore: AngularFirestore,
-    private utilService: UtilsService,
+    private utilService: UtilsService
   ) {
     
   }

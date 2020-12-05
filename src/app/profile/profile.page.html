@@ -9,13 +9,37 @@
 
 <ion-content class="background" lines="none">
   <ion-avatar class="user-avatar">
-    <img
-      src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-    />
+    <ion-img [src]="photoUrl"></ion-img>
   </ion-avatar>
 
+  <ion-text color="tertiary" *ngIf="counter === false">
+    <h2>{{ oldName }}<ion-icon name="create" (click)="counter = true"></ion-icon></h2>
+  </ion-text>
+
   <ion-text color="tertiary">
-    <h2>Kim Jisoo</h2>
+    <form *ngIf="counter === true"
+    class="form"
+    #f="ngForm"
+    (ngSubmit)="updateUser(f, idUser)"
+  >
+
+    <ion-item>
+      <ion-input
+        type="text"
+        class="formControl"
+        ngModel
+        name="nama"
+        placeholder="{{ oldName }}"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-button
+        class="button simpan"
+        type="submit"
+        >Simpan</ion-button
+      >
+    
+  </form>
   </ion-text>
 
   <ion-text color="tertiary">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { AngularFirestore, validateEventsArray } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class RegisterPage implements OnInit {
     private authSrv: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private firestore: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -52,7 +54,18 @@ export class RegisterPage implements OnInit {
         console.log(res);
         this.errorMessage = '';
         this.successMessage = 'Your account has been created. Please log in.';
-
+        this.firestore.collection('User').add({
+          email: value.email,
+          nama: value.email,
+          tari: false,
+          musik: false,
+          adat: false,
+          rumah: false,
+          wisata: false,
+          makanan: false,
+          currentLevel: '1',
+          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/uasionic2020.appspot.com/o/defaultProfilePicture%2Fmandala.svg?alt=media&token=733bc956-613b-49f1-b81f-e039ac5a8040'
+        });
         this.goLoginPage();
       }, err => {
         console.log(err);
