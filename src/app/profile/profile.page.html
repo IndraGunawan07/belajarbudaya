@@ -9,37 +9,39 @@
 
 <ion-content class="background" lines="none">
   <ion-avatar class="user-avatar">
-    <ion-img [src]="photoUrl"></ion-img>
+    <img
+      #profilePic
+      id="profilePic"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBESmDwMA_eoZIfisTmstbjrhbW5AwTEfEjg&usqp=CAU"
+      (click)="presentPopup()"
+    />
   </ion-avatar>
 
   <ion-text color="tertiary" *ngIf="counter === false">
-    <h2>{{ oldName }}<ion-icon name="create" (click)="counter = true"></ion-icon></h2>
+    <h2>
+      {{ oldName }} <ion-icon name="create" (click)="counter = true"></ion-icon>
+    </h2>
   </ion-text>
 
   <ion-text color="tertiary">
-    <form *ngIf="counter === true"
-    class="form"
-    #f="ngForm"
-    (ngSubmit)="updateUser(f, idUser)"
-  >
-
-    <ion-item>
-      <ion-input
-        type="text"
-        class="formControl"
-        ngModel
-        name="nama"
-        placeholder="{{ oldName }}"
-        required
-      ></ion-input>
-    </ion-item>
-    <ion-button
-        class="button simpan"
-        type="submit"
-        >Simpan</ion-button
-      >
-    
-  </form>
+    <form
+      *ngIf="counter === true"
+      class="form"
+      #f="ngForm"
+      (ngSubmit)="updateUser(f, idUser)"
+    >
+      <ion-item>
+        <ion-input
+          type="text"
+          class="formControl"
+          ngModel
+          name="nama"
+          placeholder="{{ oldName }}"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-button class="button simpan" type="submit">Simpan</ion-button>
+    </form>
   </ion-text>
 
   <ion-text color="tertiary">
@@ -49,26 +51,39 @@
   <div class="user-badges">
     <ion-avatar class="badge">
       <img
-        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+        #medal1Pic
+        id="medal1Pic"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBESmDwMA_eoZIfisTmstbjrhbW5AwTEfEjg&usqp=CAU"
       />
     </ion-avatar>
     <ion-avatar class="badge">
       <img
-        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+        #medal2Pic
+        id="medal2Pic"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBESmDwMA_eoZIfisTmstbjrhbW5AwTEfEjg&usqp=CAU"
       />
     </ion-avatar>
     <ion-avatar class="badge">
       <img
-        src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+        #medal3Pic
+        id="medal3Pic"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBESmDwMA_eoZIfisTmstbjrhbW5AwTEfEjg&usqp=CAU"
       />
     </ion-avatar>
   </div>
 
-  <ion-button expand="block" color="tertiary">
+  <ion-button expand="block" color="tertiary" routerLink="/medals">
     <ion-label color="secondary">Daftar Medali</ion-label>
   </ion-button>
 
   <ion-button expand="block" color="tertiary" (click)="logout()">
     <ion-label color="secondary">Keluar</ion-label>
   </ion-button>
+
+  <input
+    type="file"
+    *ngIf="isDesktop"
+    #filePicker
+    (change)="onFileChoose($event)"
+  />
 </ion-content>

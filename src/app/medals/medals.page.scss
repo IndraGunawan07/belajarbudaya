@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+
+.badge {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  margin-top: 25px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+}

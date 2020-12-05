@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center> Medali </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="container">
+      <ion-col
+        size="4"
+        *ngFor="let url of medalsUrls"
+        style="display: flex; justify-content: center"
+      >
+        <ion-avatar class="badge" (click)="presentModal()">
+          <img src="{{url}}" />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
