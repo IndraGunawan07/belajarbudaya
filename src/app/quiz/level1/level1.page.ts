@@ -50,7 +50,7 @@ export class Level1Page implements OnInit {
   }
   ionViewDidEnter() {
     this.slides.lockSwipes(true);
-
+    this.utilService.setProvince();
     this.quizService.getAllQuiz().subscribe(data => {
 
       this.quizList = data.map(e => {
@@ -77,11 +77,11 @@ export class Level1Page implements OnInit {
 
         this.category = this.quizService.getCategory();
         this.currentLevel = this.quizService.getLevel();
-        this.region = this.utilService.getProvince();;
+        this.region = this.utilService.getProvince();
         console.log(this.region);
 
 
-        if (currentData.level == this.currentLevel && currentData.category == this.category) {
+        if (currentData.level == this.currentLevel && currentData.category == this.category && currentData.region != this.region) {
           return true;
         }
         return false;
