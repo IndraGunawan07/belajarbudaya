@@ -52,7 +52,7 @@ export class UtilsService {
     Howler.volume(this.musicVolume / 100);
   }
 
-  getProvince() {
+  async setProvince() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         const pos = {
@@ -68,11 +68,13 @@ export class UtilsService {
         fetch(url)
           .then((response) => response.json())
           .then((data) => {
-            this.provinceName = this.getProvinceName(data.results);
-            alert(this.provinceName.long_name);
+            this.provinceName = this.getProvinceName(data.results).long_name;
           });
       });
     }
+  }
+  getProvince(){
+    return this.provinceName;
   }
 
   getProvinceName(results: any) {
