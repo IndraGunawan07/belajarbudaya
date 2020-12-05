@@ -25,7 +25,7 @@ export class UtilsService {
 
   constructor(
     private firestore: AngularFirestore,
-  ) {}
+  ) { }
 
   getShowDescriptionStatus() {
     return this.showDescription;
@@ -94,11 +94,11 @@ export class UtilsService {
     }
   }
 
-  getBanner(){
+  getBanner() {
     return this.firestore.collection(`Banner`).snapshotChanges();
   }
 
-  getDescription(id){
+  getDescription(id) {
     const data = this.firestore.doc<any>("Banner/" + id);
     return data.snapshotChanges();
   }

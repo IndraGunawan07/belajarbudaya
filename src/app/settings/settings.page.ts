@@ -12,7 +12,7 @@ export class SettingsPage implements OnInit {
     this.musicVolume = this.utilsSrv.getMusicVolume();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getProvince() {
     this.utilsSrv.getProvince();

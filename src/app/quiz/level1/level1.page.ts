@@ -5,6 +5,7 @@ import { Navigation, Router } from '@angular/router';
 import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { QuizappService } from 'src/app/quizapp.service';
+import { UtilsService } from 'src/app/utils.service';
 import { ModalAlertComponent } from '../components/modal-alert/modal-alert.component';
 
 
@@ -28,6 +29,7 @@ export class Level1Page implements OnInit {
 
   live: number = 3;
   clickAnswer: any = 0;
+  region: any;
 
 
   category: string;
@@ -37,7 +39,7 @@ export class Level1Page implements OnInit {
   numberQuestion: number = 0;
 
 
-  constructor(private quizService: QuizappService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
+  constructor(private quizService: QuizappService, private utilService: UtilsService, private firestore: AngularFirestore, private alertController: AlertController, private router: Router, private modalController: ModalController, private navigate: NavController) {
     this.quizData = {} as SoalQuiz;
 
   }
@@ -75,6 +77,8 @@ export class Level1Page implements OnInit {
 
         this.category = this.quizService.getCategory();
         this.currentLevel = this.quizService.getLevel();
+        this.region = this.utilService.getProvince();;
+        console.log(this.region);
 
 
         if (currentData.level == this.currentLevel && currentData.category == this.category) {
