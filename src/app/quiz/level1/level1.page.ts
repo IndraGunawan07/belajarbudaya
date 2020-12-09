@@ -54,7 +54,6 @@ export class Level1Page implements OnInit {
   ngOnInit() {}
   ionViewDidEnter() {
     this.slides.lockSwipes(true);
-    this.utilService.setProvince();
     this.quizService.getAllQuiz().subscribe((data) => {
       this.quizList = data.map((e) => {
         return {

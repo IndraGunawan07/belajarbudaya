@@ -14,12 +14,11 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {}
   ionViewWillEnter() {
-    this.utilsSrv.setProvince();
+
   }
 
-  getProvince() {
-    const province = this.utilsSrv.getProvince();
-    console.log(province);
+  setProvince() {
+    this.utilsSrv.setProvince();
   }
 
   switchShowDescriptionStatus() {
