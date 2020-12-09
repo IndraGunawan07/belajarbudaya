@@ -62,7 +62,6 @@ export class LoginPage implements OnInit {
   }
 
   loginUser(value) {
-    this.disabledButton = true;
     this.authSrv.loginUser(value).then(
       () => {
         this.exist = true;
