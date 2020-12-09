@@ -44,9 +44,6 @@ const routes: Routes = [
   {
     path: 'description/:key',
     loadChildren: () => import('./description/description.module').then( m => m.DescriptionPageModule)
-  },  {
-    path: 'medals',
-    loadChildren: () => import('./medals/medals.module').then( m => m.MedalsPageModule)
   },
 
 

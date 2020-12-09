@@ -30,6 +30,8 @@ export class HomePage implements OnInit {
   makanan: boolean;
   rumah: boolean;
 
+  test = false;
+
   constructor(
     private quizService: QuizappService,
     private authSrv: AuthService,

@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthService {
+  coba = false;
   user: any;
   email: any;
   constructor(private fireAuth: AngularFireAuth, private router: Router) {}
@@ -57,5 +58,17 @@ export class AuthService {
 
   test() {
     console.log("masuk");
+  }
+
+  getUser(){
+    this.fireAuth.user.subscribe((res) => {
+      if (res.email !== null){
+        this.coba = true;
+      }
+    });
+  }
+
+  getTest(){
+    return this.coba;
   }
 }
