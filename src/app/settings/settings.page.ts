@@ -12,17 +12,18 @@ export class SettingsPage implements OnInit {
     this.musicVolume = this.utilsSrv.getMusicVolume();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   ionViewWillEnter() {
     this.utilsSrv.setProvince();
   }
 
   getProvince() {
-
     const province = this.utilsSrv.getProvince();
     console.log(province);
+  }
+
+  switchShowDescriptionStatus() {
+    this.utilsSrv.switchShowDescriptionStatus();
   }
 
   setMusicVolume(value) {

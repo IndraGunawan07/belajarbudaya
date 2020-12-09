@@ -3,7 +3,7 @@ import { IonSlides } from "@ionic/angular";
 import { QuizappService } from "../quizapp.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "../auth.service";
-import { UtilsService } from '../utils.service';
+import { UtilsService } from "../utils.service";
 
 @Component({
   selector: "app-home",
@@ -35,9 +35,7 @@ export class HomePage implements OnInit {
     private authSrv: AuthService,
     private firestore: AngularFirestore,
     private utilService: UtilsService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.slideOptions = {
@@ -54,17 +52,15 @@ export class HomePage implements OnInit {
         };
       });
     });
-    this.utilService.getBanner().subscribe((data)=>{
-      this.sliderOne = data.map((e)=>{
+    this.utilService.getBanner().subscribe((data) => {
+      this.sliderOne = data.map((e) => {
         return {
           id: e.payload.doc.id,
-          imageURL: e.payload.doc.data()['imageURL'],
-          description: e.payload.doc.data()['description'],
+          imageURL: e.payload.doc.data()["imageURL"],
+          description: e.payload.doc.data()["description"],
         };
-      })
-      
-       
-    })
+      });
+    });
   }
 
   ionViewDidEnter() {
