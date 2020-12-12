@@ -17,7 +17,7 @@ export class LevelClearPage implements OnInit {
   currentLevel: string;
   changeLevel: number;
   tari: boolean;
-  musik: boolean;
+  lagu: boolean;
   wisata: boolean;
   adat: boolean;
   makanan: boolean;
@@ -30,9 +30,9 @@ export class LevelClearPage implements OnInit {
     private navigate: NavController,
     private authSrv: AuthService,
     private firestore: AngularFirestore
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   ionViewDidEnter() {
     this.category = this.quizService.getCategory();
     console.log("category: ", this.category);
@@ -46,7 +46,7 @@ export class LevelClearPage implements OnInit {
               this.idUser = e.payload.doc.id;
               this.currentLevel = e.payload.doc.data()["currentLevel"];
               this.tari = e.payload.doc.data()["tari"];
-              this.musik = e.payload.doc.data()["musik"];
+              this.lagu = e.payload.doc.data()["lagu"];
               this.rumah = e.payload.doc.data()["rumah"];
               this.adat = e.payload.doc.data()["adat"];
               this.makanan = e.payload.doc.data()["makanan"];
@@ -84,10 +84,10 @@ export class LevelClearPage implements OnInit {
       this.firestore.collection(`User`).doc(this.idUser).update({
         wisata: this.wisata,
       });
-    } else if (this.category === "Musik") {
-      this.musik = true;
+    } else if (this.category === "Lagu") {
+      this.lagu = true;
       this.firestore.collection(`User`).doc(this.idUser).update({
-        musik: this.musik,
+        lagu: this.lagu,
       });
     }
   }
@@ -95,7 +95,7 @@ export class LevelClearPage implements OnInit {
     this.checkCategory();
     if (
       this.makanan === true &&
-      this.musik === true &&
+      this.lagu === true &&
       this.adat === true &&
       this.rumah === true &&
       this.wisata === true &&

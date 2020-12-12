@@ -58,7 +58,7 @@ export class RegisterPage implements OnInit {
           email: value.email,
           nama: value.email,
           tari: false,
-          musik: false,
+          lagu: false,
           adat: false,
           rumah: false,
           wisata: false,

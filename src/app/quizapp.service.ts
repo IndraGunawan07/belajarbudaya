@@ -23,7 +23,7 @@ export class QuizappService {
     private firestore: AngularFirestore,
     private navCtrl: NavController,
     private authSrv: AuthService
-  ) {}
+  ) { }
 
   getAllQuiz() {
     return this.firestore.collection(`SoalQuiz`).snapshotChanges();
@@ -66,7 +66,7 @@ export class QuizappService {
   updateCurrentLevel(id, currentLvl) {
     this.firestore.collection(`User`).doc(id).update({
       currentLevel: currentLvl,
-      musik: false,
+      lagu: false,
       tari: false,
       wisata: false,
       makanan: false,

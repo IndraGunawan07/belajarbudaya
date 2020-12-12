@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="background" >
-  <ion-slides #slides>
+  <ion-slides #slides [options]="slideOptions">
     <ion-slide *ngFor="let item of quizList; let i = index;">
       <ion-grid>
         <ion-row>

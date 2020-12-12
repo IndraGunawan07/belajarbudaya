@@ -73,7 +73,7 @@ export class UtilsService {
       });
     }
   }
-  getProvince(){
+  getProvince() {
     return this.provinceName;
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Navigation, Router } from "@angular/router";
@@ -19,7 +19,8 @@ import { ModalAlertComponent } from "../components/modal-alert/modal-alert.compo
 })
 export class Level1Page implements OnInit {
   @ViewChild("slides") slides: any;
-  slideOptions: any;
+  @Input() slideOption = {};
+
   quizList = [];
   quizData: SoalQuiz;
   questionId: string;
@@ -38,6 +39,11 @@ export class Level1Page implements OnInit {
   openModal: string;
   index: number = 0;
   numberQuestion: number = 0;
+  tooglePenjelasan: boolean;
+  slideOptions = {
+    initialSlide: 0,
+    speed: 400
+  };
 
   constructor(
     private quizService: QuizappService,
@@ -51,8 +57,12 @@ export class Level1Page implements OnInit {
     this.quizData = {} as SoalQuiz;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
   ionViewDidEnter() {
+    this.slides.slideTo(0, 0);
+    this.tooglePenjelasan = this.utilService.getShowDescriptionStatus();
+    console.log(this.tooglePenjelasan);
     this.slides.lockSwipes(true);
     this.utilService.setProvince();
     this.quizService.getAllQuiz().subscribe((data) => {
@@ -94,9 +104,12 @@ export class Level1Page implements OnInit {
 
     this.startTimer(this.startDuration);
   }
+
   ionViewWillLeave() {
     clearInterval(this.interval);
+
   }
+
 
   startTimer(duration) {
     // let stop = 0;
@@ -172,8 +185,21 @@ export class Level1Page implements OnInit {
   }
   nextSlide() {
     if (this.live >= 0 && this.numberQuestion === 10) {
+      this.live = 3;
+      this.numberQuestion = 0;
+      console.log(this.numberQuestion);
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(0, 1000);
+      this.slides.lockSwipes(true);
       this.router.navigateByUrl("/level-clear");
     } else if (this.live === 0) {
+      this.live = 3;
+      this.numberQuestion = 0;
+      console.log(this.numberQuestion);
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(0, 1000);
+      this.slides.lockSwipes(true);
+
       this.router.navigateByUrl("/levellose");
     } else {
       this.slides.lockSwipes(false);
@@ -183,67 +209,122 @@ export class Level1Page implements OnInit {
     }
   }
   async presentTrue(id) {
-    const alert = await this.alertController.create({
-      header: "Jawaban Anda Benar",
-      cssClass: "alert-true",
-      buttons: [
-        {
-          text: "Penjelasan",
-          cssClass: "buttonColor",
-          handler: () => this.goToExplanation(id),
-        },
-        {
-          text: "Selanjutnya",
-          cssClass: "primary",
-          handler: () => this.nextSlide(),
-        },
-      ],
-      backdropDismiss: false,
-    });
-    await alert.present();
+    if (this.tooglePenjelasan === true) {
+      const alert = await this.alertController.create({
+        header: "Jawaban Anda Benar",
+        cssClass: "alert-true",
+        buttons: [
+          {
+            text: "Penjelasan",
+            cssClass: "buttonColor",
+            handler: () => this.goToExplanation(id),
+          },
+          {
+            text: "Selanjutnya",
+            cssClass: "primary",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
+      await alert.present();
+    } else {
+      const alert = await this.alertController.create({
+        header: "Jawaban Anda Benar",
+        cssClass: "alert-true",
+        buttons: [
+          {
+            text: "Selanjutnya",
+            cssClass: "noDesc",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
+      await alert.present();
+    }
+
+
   }
   async presentFalse(id, answer) {
-    const alert = await this.alertController.create({
-      header: "Jawaban Anda Salah",
-      cssClass: "alert-false",
-      message: "Jawaban yang Benar :" + answer,
-      buttons: [
-        {
-          text: "Penjelasan",
+    if (this.tooglePenjelasan === true) {
+      const alert = await this.alertController.create({
+        header: "Jawaban Anda Salah",
+        cssClass: "alert-false",
+        message: "Jawaban yang Benar :             " + answer,
+        buttons: [
+          {
+            text: "Penjelasan",
 
-          cssClass: "buttonColor",
-          handler: () => this.goToExplanation(id),
-        },
-        {
-          text: "Selanjutnya",
-          cssClass: "primary",
-          handler: () => this.nextSlide(),
-        },
-      ],
-      backdropDismiss: false,
-    });
+            cssClass: "buttonColor",
+            handler: () => this.goToExplanation(id),
+          },
+          {
+            text: "Selanjutnya",
+            cssClass: "primary",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
 
-    await alert.present();
+      await alert.present();
+    }
+    else {
+      const alert = await this.alertController.create({
+        header: "Jawaban Anda Salah",
+        cssClass: "alert-false",
+        message: "Jawaban yang Benar : \n\n\n" + answer,
+        buttons: [
+          {
+            text: "Selanjutnya",
+            cssClass: "noDesc",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
+
+      await alert.present();
+    }
   }
   async presentTimeout(id) {
-    const alert = await this.alertController.create({
-      header: "Waktu Anda Habis",
-      cssClass: "alert-false",
-      buttons: [
-        {
-          text: "Penjelasan",
-          cssClass: "buttonColor",
-          handler: () => this.goToExplanation(id),
-        },
-        {
-          text: "Selanjutnya",
-          cssClass: "primary",
-          handler: () => this.nextSlide(),
-        },
-      ],
-      backdropDismiss: false,
-    });
+    if (this.tooglePenjelasan === true) {
+      const alert = await this.alertController.create({
+        header: "Waktu Anda Habis",
+        cssClass: "alert-false",
+        buttons: [
+          {
+            text: "Penjelasan",
+            cssClass: "buttonColor",
+            handler: () => this.goToExplanation(id),
+          },
+          {
+            text: "Selanjutnya",
+            cssClass: "primary",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
 
-    await alert.present();
+      await alert.present();
+    }
+    else {
+      const alert = await this.alertController.create({
+        header: "Waktu Anda Habis",
+        cssClass: "alert-false",
+        buttons: [
+          {
+            text: "Selanjutnya",
+            cssClass: "primary",
+            handler: () => this.nextSlide(),
+          },
+        ],
+        backdropDismiss: false,
+      });
+
+      await alert.present();
+    }
   }
 }

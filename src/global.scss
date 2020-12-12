@@ -36,8 +36,9 @@ ion-modal {
   background-color: #ffffff;
   padding-top: 1.125rem;
   --width: 100% !important;
-  --height: 25% !important;
+  --height: 35% !important;
   display: block;
+  text-align: center;
 }
 
 .alert-update .alert-wrapper {
@@ -68,6 +69,18 @@ ion-modal {
   background-color: #7a9eaf;
   color: white;
   border-radius: 5px;
+}
+
+.alert-true .alert-wrapper .alert-button-group .noDesc,
+.alert-false .alert-wrapper .alert-button-group .noDesc {
+  width: 100%;
+  text-align: center;
+}
+
+.alert-true .alert-wrapper .alert-button-group .noDesc .alert-button-inner,
+.alert-false .alert-wrapper .alert-button-group .noDesc .alert-button-inner {
+  display: block;
+  text-align: center;
 }
 
 .modal-class {

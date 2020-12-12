@@ -73,20 +73,7 @@ const routes: Routes = [
             (m) => m.ExplanationPageModule
           ),
       },
-      {
-        path: "level-clear",
-        loadChildren: () =>
-          import("../quiz/level-clear/level-clear.module").then(
-            (m) => m.LevelClearPageModule
-          ),
-      },
-      {
-        path: "levellose",
-        loadChildren: () =>
-          import("../quiz/levellose/levellose.module").then(
-            (m) => m.LevellosePageModule
-          ),
-      },
+
       { path: "", redirectTo: "/home", pathMatch: "full" },
     ],
   },

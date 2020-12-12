@@ -4,6 +4,7 @@ import { QuizappService } from "../quizapp.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "../auth.service";
 import { UtilsService } from "../utils.service";
+import { timeStamp } from 'console';
 
 @Component({
   selector: "app-home",
@@ -24,7 +25,7 @@ export class HomePage implements OnInit {
 
   idUser: string;
   tari: boolean;
-  musik: boolean;
+  lagu: boolean;
   wisata: boolean;
   adat: boolean;
   makanan: boolean;
@@ -35,7 +36,7 @@ export class HomePage implements OnInit {
     private authSrv: AuthService,
     private firestore: AngularFirestore,
     private utilService: UtilsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.slideOptions = {
@@ -76,7 +77,7 @@ export class HomePage implements OnInit {
               this.email = e.payload.doc.data()["email"];
               this.currentLevel = e.payload.doc.data()["currentLevel"];
               this.tari = e.payload.doc.data()["tari"];
-              this.musik = e.payload.doc.data()["musik"];
+              this.lagu = e.payload.doc.data()["lagu"];
               this.rumah = e.payload.doc.data()["rumah"];
               this.adat = e.payload.doc.data()["adat"];
               this.makanan = e.payload.doc.data()["makanan"];
@@ -88,6 +89,9 @@ export class HomePage implements OnInit {
   }
 
   sendCategory(clickedCategory: string) {
+    if (this.tari === true) {
+      this.alert();
+    }
     console.log(clickedCategory);
     this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
   }

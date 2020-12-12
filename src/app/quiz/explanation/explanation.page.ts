@@ -33,7 +33,6 @@ export class ExplanationPage implements OnInit {
 
       this.title = data.payload.data()['title'];
       this.desc = data.payload.data()['description'];
-      this.imgUrl = data.payload.data()['imgUrl'];
     });
 
   }

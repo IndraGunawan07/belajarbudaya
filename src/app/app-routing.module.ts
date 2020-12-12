@@ -43,10 +43,25 @@ const routes: Routes = [
   },
   {
     path: 'description/:key',
-    loadChildren: () => import('./description/description.module').then( m => m.DescriptionPageModule)
-  },  {
+    loadChildren: () => import('./description/description.module').then(m => m.DescriptionPageModule)
+  },
+  {
     path: 'medals',
-    loadChildren: () => import('./medals/medals.module').then( m => m.MedalsPageModule)
+    loadChildren: () => import('./medals/medals.module').then(m => m.MedalsPageModule)
+  },
+  {
+    path: "level-clear",
+    loadChildren: () =>
+      import("./quiz/level-clear/level-clear.module").then(
+        (m) => m.LevelClearPageModule
+      ),
+  },
+  {
+    path: "levellose",
+    loadChildren: () =>
+      import("./quiz/levellose/levellose.module").then(
+        (m) => m.LevellosePageModule
+      ),
   },
 
 
@@ -74,4 +89,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
