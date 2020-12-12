@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuardService } from '../auth-guard.service';
 
 import { TabsPage } from "./tabs.page";
 
@@ -15,6 +16,7 @@ const routes: Routes = [
             path: "",
             loadChildren: () =>
               import("../home/home.module").then((m) => m.HomePageModule),
+            canActivate: [AuthGuardService]
           },
         ],
       },
@@ -27,6 +29,7 @@ const routes: Routes = [
               import("../quiz/level1/level1.module").then(
                 (m) => m.Level1PageModule
               ),
+            canActivate: [AuthGuardService]
           },
         ],
       },
@@ -39,6 +42,7 @@ const routes: Routes = [
               import("../aboutus/aboutus.module").then(
                 (m) => m.AboutusPageModule
               ),
+            canActivate: [AuthGuardService]
           },
         ],
       },
@@ -51,6 +55,7 @@ const routes: Routes = [
               import("../settings/settings.module").then(
                 (m) => m.SettingsPageModule
               ),
+            canActivate: [AuthGuardService]
           },
         ],
       },
@@ -63,6 +68,20 @@ const routes: Routes = [
               import("../profile/profile.module").then(
                 (m) => m.ProfilePageModule
               ),
+            canActivate: [AuthGuardService]
+          },
+        ],
+      },
+      {
+        path: "medals",
+        children: [
+          {
+            path: "",
+            loadChildren: () =>
+              import("../medals/medals.module").then(
+                (m) => m.MedalsPageModule
+              ),
+            canActivate: [AuthGuardService]
           },
         ],
       },
@@ -72,8 +91,8 @@ const routes: Routes = [
           import("../quiz/explanation/explanation.module").then(
             (m) => m.ExplanationPageModule
           ),
+        canActivate: [AuthGuardService]
       },
-
       { path: "", redirectTo: "/home", pathMatch: "full" },
     ],
   },

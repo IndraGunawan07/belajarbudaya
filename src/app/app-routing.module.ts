@@ -63,6 +63,17 @@ const routes: Routes = [
         (m) => m.LevellosePageModule
       ),
   },
+  {
+    path: "add-question",
+    loadChildren: () =>
+      import("./add-question/add-question.module").then(
+        (m) => m.AddQuestionPageModule
+      ),
+  },
+  {
+    path: 'description/:key',
+    loadChildren: () => import('./description/description.module').then(m => m.DescriptionPageModule)
+  },
 
 
 
@@ -83,10 +94,36 @@ const routes: Routes = [
   // },
 ];
 
+<<<<<<< HEAD
+
+
+  // {
+  //   path: "settings",
+  //   loadChildren: () =>
+  //     import("./settings/settings.module").then((m) => m.SettingsPageModule),
+  // },
+  // {
+  //   path: "profile",
+  //   loadChildren: () =>
+  //     import("./profile/profile.module").then((m) => m.ProfilePageModule),
+  // },
+  // {
+  //   path: "aboutus",
+  //   loadChildren: () =>
+  //     import("./aboutus/aboutus.module").then((m) => m.AboutusPageModule),
+  // },
+];
+
+=======
+>>>>>>> 24015a43e2459907fdd3b69fdc830c4ce171d03b
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
 })
+<<<<<<< HEAD
 export class AppRoutingModule { }
+=======
+export class AppRoutingModule {}
+>>>>>>> 24015a43e2459907fdd3b69fdc830c4ce171d03b

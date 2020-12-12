@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoadingController, ToastController } from "@ionic/angular";
+import { AuthGuardService } from 'src/app/auth-guard.service';
 import { AuthService } from "src/app/auth.service";
 import { UtilsService } from "src/app/utils.service";
 
@@ -72,6 +73,7 @@ export class LoginPage implements OnInit {
         this.errorMessage = err.message;
       }
     );
+    this.authSrv.getUser();
 
     setTimeout(() => {
       this.presentLoading(this.exist);
