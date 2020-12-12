@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { IonSlides } from "@ionic/angular";
+import { AlertController, IonSlides } from "@ionic/angular";
 import { QuizappService } from "../quizapp.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "../auth.service";
@@ -37,7 +37,8 @@ export class HomePage implements OnInit {
     private quizService: QuizappService,
     private authSrv: AuthService,
     private firestore: AngularFirestore,
-    private utilService: UtilsService
+    private utilService: UtilsService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -90,11 +91,80 @@ export class HomePage implements OnInit {
     });
   }
 
-  sendCategory(clickedCategory: string) {
-    if (this.tari === true) {
-      this.alert();
+  sendCategory(clickedCategory, makanan, tari, lagu, rumah, adat, wisata) {
+    console.log('data makanan : ', makanan);
+    console.log('category', clickedCategory);
+    switch (clickedCategory) {
+      case 'Makanan':
+        if (makanan === true) {
+          this.presentDone()
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+        }
+        break;
+      case 'Lagu':
+        if (lagu === true) {
+          this.presentDone()
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+        }
+        break;
+      case 'Tari':
+        if (tari === true) {
+          this.presentDone()
+
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+
+        }
+        break;
+      case 'Rumah Adat':
+        if (rumah === true) {
+          this.presentDone()
+
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+
+        }
+        break;
+      case 'Upacara Adat':
+        if (adat === true) {
+          this.presentDone()
+
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+        }
+        break;
+      case 'Wisata':
+        if (wisata === true) {
+          this.presentDone()
+
+        }
+        else {
+          this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+        }
+        break;
+
     }
-    console.log(clickedCategory);
-    this.quizService.setCategorynLevel(clickedCategory, this.currentLevel);
+
+
+  }
+  async presentDone() {
+
+    const alert = await this.alertController.create({
+      header: "Anda Sudah Menyelesaikan Kategori ini! Silahkan pilih kategori lain",
+      cssClass: "alert-done",
+      buttons: [
+        'OK'
+      ],
+      backdropDismiss: false,
+    });
+
+    await alert.present();
   }
 }
