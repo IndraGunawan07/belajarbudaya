@@ -5,6 +5,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "../auth.service";
 import { UtilsService } from "../utils.service";
 import { timeStamp } from 'console';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -30,6 +31,7 @@ export class HomePage implements OnInit {
   adat: boolean;
   makanan: boolean;
   rumah: boolean;
+  region: string;
 
   test = false;
 
@@ -38,7 +40,8 @@ export class HomePage implements OnInit {
     private authSrv: AuthService,
     private firestore: AngularFirestore,
     private utilService: UtilsService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -68,6 +71,9 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.region = this.utilService.getProvince();
+
+
     this.authSrv.getCurrentUser().subscribe((res) => {
       this.firestore
         .collection(`User`)
@@ -94,6 +100,9 @@ export class HomePage implements OnInit {
   sendCategory(clickedCategory, makanan, tari, lagu, rumah, adat, wisata) {
     console.log('data makanan : ', makanan);
     console.log('category', clickedCategory);
+    if (this.region == null) {
+      this.presentRegion();
+    }
     switch (clickedCategory) {
       case 'Makanan':
         if (makanan === true) {
@@ -154,6 +163,27 @@ export class HomePage implements OnInit {
 
 
   }
+  goToSetting() {
+    this.router.navigateByUrl('/settings');
+  }
+  async presentRegion() {
+    const alert = await this.alertController.create({
+      header: "Silakan mengatur lokasi Anda sekarang!",
+      cssClass: "alert-done",
+      buttons: [
+        {
+          text: "Settings",
+          cssClass: "",
+          handler: () => this.goToSetting(),
+        }
+      ],
+      backdropDismiss: false,
+    });
+
+    await alert.present();
+  }
+
+
   async presentDone() {
 
     const alert = await this.alertController.create({

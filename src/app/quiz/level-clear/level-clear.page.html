@@ -9,7 +9,10 @@
 
 <ion-content class="background">
   <p class="title ion-text-wrap">Selamat! Anda sudah menyelesaikan Kategori ini</p>
-  <p class="correct">Jawaban benar: {{ 10 - live }}/10</p>
+  <p class="correct" *ngIf="live === 3">Jawaban benar: 10/10</p>
+  <p class="correct" *ngIf="live === 2">Jawaban benar: 9/10</p>
+  <p class="correct" *ngIf="live === 1">Jawaban benar: 8/10</p>
+  <p class="correct" *ngIf="live === 0">Jawaban benar: 7/10</p>
 
   <p class="textCenter"><ion-button class="option" (click)="backToHome()">Menu Utama</ion-button></p>
   <!-- <p class="textCenter">

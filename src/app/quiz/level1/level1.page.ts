@@ -57,12 +57,19 @@ export class Level1Page implements OnInit {
     this.quizData = {} as SoalQuiz;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   ionViewDidEnter() {
+    this.region = this.utilService.getProvince();
+
+    if (this.region == null) {
+      this.router.navigateByUrl('/home');
+    }
     this.slides.slideTo(0, 0);
     this.tooglePenjelasan = this.utilService.getShowDescriptionStatus();
-    console.log(this.tooglePenjelasan);
+
     this.slides.lockSwipes(true);
     this.quizService.getAllQuiz().subscribe((data) => {
       this.quizList = data.map((e) => {
@@ -85,17 +92,19 @@ export class Level1Page implements OnInit {
       this.quizList = this.quizList.filter((currentData) => {
         this.category = this.quizService.getCategory();
         this.currentLevel = this.quizService.getLevel();
-        this.region = this.utilService.getProvince();
-        console.log(this.region);
 
+        console.log(this.region);
         if (
-          currentData.level == this.currentLevel &&
-          currentData.category == this.category &&
-          currentData.region != this.region
+          currentData.level === this.currentLevel &&
+          currentData.category === this.category &&
+          currentData.region != this.region && this.region != null
         ) {
+
           return true;
+        } else {
+
+          return false;
         }
-        return false;
       });
 
       this.questionId = this.quizList[this.index].id;
