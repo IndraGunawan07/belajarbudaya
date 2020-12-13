@@ -190,6 +190,13 @@ export class Level1Page implements OnInit {
     this.slides.slideNext();
     this.startTimer(this.startDuration);
     this.slides.lockSwipes(true);
+    if (this.live === 0) {
+      this.live = 3;
+      this.numberQuestion = 0;
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(0, 1000);
+      this.slides.lockSwipes(true);
+    }
   }
   nextSlide() {
     if (this.live >= 0 && this.numberQuestion === 10) {
