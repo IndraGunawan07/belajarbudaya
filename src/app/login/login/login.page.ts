@@ -19,7 +19,7 @@ import { UtilsService } from "src/app/utils.service";
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   errorMessage: string = "";
-  exist: boolean = true;
+  exist: boolean = false;
   toast: any = null;
   disabledButton: boolean = false;
 
@@ -85,8 +85,8 @@ export class LoginPage implements OnInit {
           this.disabledButton = false;
           this.router.navigateByUrl("/login");
         }
-      }, 600);
-    }, 800);
+      }, 800);
+    }, 1000);
   }
 
   goToRegisterPage() {

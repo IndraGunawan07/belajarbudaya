@@ -4,7 +4,6 @@ import { QuizappService } from "../quizapp.service";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AuthService } from "../auth.service";
 import { UtilsService } from "../utils.service";
-import { timeStamp } from 'console';
 import { Router } from "@angular/router";
 
 @Component({
