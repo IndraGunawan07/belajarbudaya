@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from "@angular/router";
 import { Howl, Howler } from "howler";
 
 @Injectable({
@@ -25,6 +26,7 @@ export class UtilsService {
 
   constructor(
     private firestore: AngularFirestore,
+    private router: Router
   ) { }
 
   getShowDescriptionStatus() {
@@ -36,6 +38,7 @@ export class UtilsService {
   }
 
   playBackgroundMusic() {
+
     this.sound.play();
   }
 

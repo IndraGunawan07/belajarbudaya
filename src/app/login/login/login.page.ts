@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
@@ -63,30 +63,34 @@ export class LoginPage implements OnInit {
   }
 
   loginUser(value) {
+
     this.authSrv.loginUser(value).then(
       () => {
         this.exist = true;
         this.errorMessage = "";
+        this.authSrv.getUser();
+        this.presentLoading(this.exist);
       },
       (err) => {
         this.exist = false;
         this.errorMessage = err.message;
+        this.presentLoading(this.exist);
       }
     );
-    this.authSrv.getUser();
-
     setTimeout(() => {
-      this.presentLoading(this.exist);
+
       setTimeout(() => {
         if (this.exist) {
-          this.utilsSrv.playBackgroundMusic();
           this.router.navigateByUrl("/home");
+          this.utilsSrv.playBackgroundMusic();
+
         } else {
           this.disabledButton = false;
-          this.router.navigateByUrl("/login");
+
         }
-      }, 800);
-    }, 1000);
+      }, 1000);
+    }, 1500);
+
   }
 
   goToRegisterPage() {
@@ -94,6 +98,7 @@ export class LoginPage implements OnInit {
   }
 
   async presentToast(param: boolean) {
+
     if (param) {
       this.toast = await this.toastCtrl.create({
         message: "Signed In",
@@ -114,7 +119,7 @@ export class LoginPage implements OnInit {
   async presentLoading(param: boolean) {
     const loading = await this.loadingCtrl.create({
       message: "Signing in...",
-      duration: 500,
+      duration: 1000,
     });
 
     await loading.present();

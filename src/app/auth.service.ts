@@ -6,9 +6,10 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class AuthService {
-  coba = false;
+
   user: any;
   email: any;
+  loginStatus: boolean = false;
   constructor(private fireAuth: AngularFireAuth, private router: Router) { }
 
   registerUser(value) {
@@ -57,13 +58,15 @@ export class AuthService {
 
   getUser() {
     this.fireAuth.user.subscribe((res) => {
-      if (res.email !== null) {
-        this.coba = true;
+      if (res.email === null) {
+        this.loginStatus = false;
+      } else {
+        this.loginStatus = true;
       }
     });
   }
 
-  getTest() {
-    return this.coba;
+  getLoggedInStatus() {
+    return this.loginStatus;
   }
 }

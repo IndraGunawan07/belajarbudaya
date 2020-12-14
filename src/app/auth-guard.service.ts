@@ -12,8 +12,8 @@ export class AuthGuardService {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    const user = this.authService.getTest();
-    if (user === false){
+    const user = this.authService.getLoggedInStatus();
+    if (user === false) {
       this.router.navigate(['/login']);
     }
 
