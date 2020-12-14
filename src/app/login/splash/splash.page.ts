@@ -9,9 +9,12 @@ const { SplashScreen } = Plugins;
   styleUrls: ["./splash.page.scss"],
 })
 export class SplashPage implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+  }
+  ionViewWillEnter() {
     setTimeout(() => {
       this.router.navigateByUrl("/login");
     }, 4000);

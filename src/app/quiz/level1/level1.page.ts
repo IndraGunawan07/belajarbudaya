@@ -143,6 +143,7 @@ export class Level1Page implements OnInit {
     if (this.timer <= -1) {
       clearInterval(this.interval);
       this.live -= 1;
+      this.numberQuestion = this.numberQuestion + 1;
       this.presentTimeout(this.questionId);
     }
   }
