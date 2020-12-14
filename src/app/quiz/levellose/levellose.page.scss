@@ -1,21 +1,71 @@
-.title{
-    color: #7A9EAF;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 40%;
-    font-weight: bold;
-}
+@media (min-width: 411px){
+    .title{
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20%;
+        font-weight: bold;
+    }
 
-.option{
-    --background: #7A9EAF;
-    --border-radius: 10px;
-    --padding-top: 7px;
-    --padding-end: 20px;
-    --padding-start: 20px;
-    --padding-bottom: 7px;
-    color: white;
-}
+    .option{
+        --background: #7A9EAF;
+        --border-radius: 10px;
+        --padding-top: 7px;
+        --padding-end: 20px;
+        --padding-start: 20px;
+        --padding-bottom: 7px;
+        color: white;
+    }
+    
+    .textCenter{
+        text-align: center;
+    }
 
-.textCenter{
-    text-align: center;
+}
+@media (min-width: 1025px){
+    .title{
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 25%;
+        font-weight: bold;
+    }
+
+    .option{
+        --background: #7A9EAF;
+        --border-radius: 10px;
+        --padding-top: 7px;
+        --padding-end: 20px;
+        --padding-start: 20px;
+        --padding-bottom: 7px;
+        color: white;
+    }
+    
+    .textCenter{
+        text-align: center;
+    }
+
+}
+@media (max-width: 411px){
+    .title{
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 40%;
+        font-weight: bold;
+    }
+    
+    .option{
+        --background: #7A9EAF;
+        --border-radius: 10px;
+        --padding-top: 7px;
+        --padding-end: 20px;
+        --padding-start: 20px;
+        --padding-bottom: 7px;
+        color: white;
+    }
+    
+    .textCenter{
+        text-align: center;
+    }
 }

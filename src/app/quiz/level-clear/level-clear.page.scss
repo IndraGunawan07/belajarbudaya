@@ -1,25 +1,81 @@
-.title {
-    color: #7A9EAF;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 40%;
-    font-weight: bold;
+@media (min-width: 411px){
+    .title {
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 20%;
+        font-weight: bold;
+    }
+    
+    .correct {
+        color: rgba(0, 0, 0, 0.604);
+        font-size: 25px;
+        text-align: center;
+        margin-top: 20%;
+    }
+    
+    .textCenter {
+        text-align: center;
+    }
+    
+    .option {
+        --background: #7A9EAF;
+        --border-radius: 10px;
+    
+        color: white;
+    }
 }
-
-.correct {
-    color: rgba(0, 0, 0, 0.604);
-    font-size: 25px;
-    text-align: center;
-    margin-top: 40%;
+@media (min-width: 1025px){
+    .title {
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 25%;
+        font-weight: bold;
+    }
+    
+    .correct {
+        color: rgba(0, 0, 0, 0.604);
+        font-size: 25px;
+        text-align: center;
+        margin-top: 25%;
+    }
+    
+    .textCenter {
+        text-align: center;
+    }
+    
+    .option {
+        --background: #7A9EAF;
+        --border-radius: 10px;
+    
+        color: white;
+    }
 }
-
-.textCenter {
-    text-align: center;
-}
-
-.option {
-    --background: #7A9EAF;
-    --border-radius: 10px;
-
-    color: white;
+@media (max-width: 411px){
+    .title {
+        color: #7A9EAF;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 40%;
+        font-weight: bold;
+    }
+    
+    .correct {
+        color: rgba(0, 0, 0, 0.604);
+        font-size: 25px;
+        text-align: center;
+        margin-top: 40%;
+    }
+    
+    .textCenter {
+        text-align: center;
+    }
+    
+    .option {
+        --background: #7A9EAF;
+        --border-radius: 10px;
+    
+        color: white;
+    }
 }
