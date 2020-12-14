@@ -35,7 +35,6 @@ export class LevelClearPage implements OnInit {
   ngOnInit() { }
   ionViewDidEnter() {
     this.category = this.quizService.getCategory();
-    console.log("category: ", this.category);
     this.authSrv.getCurrentUser().subscribe((res) => {
       this.firestore
         .collection(`User`)
@@ -103,7 +102,6 @@ export class LevelClearPage implements OnInit {
     ) {
       this.changeLevel = this.changeLevel + 1;
 
-      console.log("perubahan level ", this.changeLevel);
       this.quizService.updateCurrentLevel(
         this.idUser,
         this.changeLevel.toString()

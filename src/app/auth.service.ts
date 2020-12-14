@@ -9,7 +9,7 @@ export class AuthService {
   coba = false;
   user: any;
   email: any;
-  constructor(private fireAuth: AngularFireAuth, private router: Router) {}
+  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
 
   registerUser(value) {
     return new Promise<any>((resolve, reject) => {
@@ -42,7 +42,6 @@ export class AuthService {
         this.fireAuth
           .signOut()
           .then(() => {
-            console.log("Log Out");
             resolve();
           })
           .catch((error) => {
@@ -56,19 +55,15 @@ export class AuthService {
     return this.fireAuth.user;
   }
 
-  test() {
-    console.log("masuk");
-  }
-
-  getUser(){
+  getUser() {
     this.fireAuth.user.subscribe((res) => {
-      if (res.email !== null){
+      if (res.email !== null) {
         this.coba = true;
       }
     });
   }
 
-  getTest(){
+  getTest() {
     return this.coba;
   }
 }

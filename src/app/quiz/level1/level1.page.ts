@@ -93,7 +93,6 @@ export class Level1Page implements OnInit {
         this.category = this.quizService.getCategory();
         this.currentLevel = this.quizService.getLevel();
 
-        console.log(this.region);
         if (
           currentData.level === this.currentLevel &&
           currentData.category === this.category &&
@@ -158,7 +157,6 @@ export class Level1Page implements OnInit {
       this.live -= 1;
       clearInterval(this.interval);
       this.quizService.setLive(this.live);
-      console.log("getLivefalce: ", this.quizService.getLive());
       this.presentFalse(question.id, question.trueAnswer);
     }
   }
@@ -185,17 +183,22 @@ export class Level1Page implements OnInit {
     this.nextSlide2();
   }
   nextSlide2() {
-    console.log("life ", this.live);
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.startTimer(this.startDuration);
     this.slides.lockSwipes(true);
+    if (this.live === 0) {
+      this.live = 3;
+      this.numberQuestion = 0;
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(0, 1000);
+      this.slides.lockSwipes(true);
+    }
   }
   nextSlide() {
     if (this.live >= 0 && this.numberQuestion === 10) {
       this.live = 3;
       this.numberQuestion = 0;
-      console.log(this.numberQuestion);
       this.slides.lockSwipes(false);
       this.slides.slideTo(0, 1000);
       this.slides.lockSwipes(true);
@@ -203,7 +206,6 @@ export class Level1Page implements OnInit {
     } else if (this.live === 0) {
       this.live = 3;
       this.numberQuestion = 0;
-      console.log(this.numberQuestion);
       this.slides.lockSwipes(false);
       this.slides.slideTo(0, 1000);
       this.slides.lockSwipes(true);
