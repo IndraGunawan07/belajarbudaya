@@ -30,7 +30,6 @@ export class QuizappService {
   }
   setQuizExplain(id) {
     this.idQuiz = id;
-    console.log(this.idQuiz);
   }
   getQuizExplain() {
     const data = this.firestore.doc<any>("SoalQuiz/" + this.idQuiz);
@@ -55,7 +54,6 @@ export class QuizappService {
   setCategorynLevel(clickedCategory, level) {
     this.category = clickedCategory;
     this.currentLevel = level;
-    console.log("level sekarang", this.currentLevel);
     this.navCtrl.navigateForward("/level1");
   }
 

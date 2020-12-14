@@ -28,7 +28,6 @@ export class ExplanationPage implements OnInit {
   ngOnInit() {
   }
   ionViewDidEnter() {
-    console.log(this.quizService.getQuizExplain());
     this.quizService.getQuizExplain().subscribe(data => {
 
       this.title = data.payload.data()['title'];
@@ -44,7 +43,6 @@ export class ExplanationPage implements OnInit {
       this.router.navigateByUrl('/level-clear');
     }
     else if (this.live === 0) {
-      console.log('false');
       this.router.navigateByUrl('/levellose');
     }
     else {

@@ -60,7 +60,7 @@ export class ProfilePage implements OnInit {
     private sanitizer: DomSanitizer,
     private storage: AngularFireStorage,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (
@@ -148,7 +148,6 @@ export class ProfilePage implements OnInit {
     const reader = new FileReader();
 
     if (!file.type.match(pattern)) {
-      console.log("File format not supported");
       return;
     }
 
@@ -189,7 +188,6 @@ export class ProfilePage implements OnInit {
                 photoUrl: res,
               });
             },
-            (err) => console.log(err)
           )
         )
       )

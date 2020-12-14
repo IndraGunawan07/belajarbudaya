@@ -53,7 +53,6 @@ export class UtilsService {
   }
 
   async setProvince() {
-    console.log(this.provinceName);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         const pos = {
@@ -70,7 +69,6 @@ export class UtilsService {
           .then((response) => response.json())
           .then((data) => {
             this.provinceName = this.getProvinceName(data.results).long_name;
-            console.log(this.provinceName);
           });
       });
     }

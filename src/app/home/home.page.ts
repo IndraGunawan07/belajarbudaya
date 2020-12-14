@@ -98,8 +98,6 @@ export class HomePage implements OnInit {
   }
 
   sendCategory(clickedCategory, makanan, tari, lagu, rumah, adat, wisata) {
-    console.log('data makanan : ', makanan);
-    console.log('category', clickedCategory);
     if (this.region == null) {
       this.presentRegion();
     }
